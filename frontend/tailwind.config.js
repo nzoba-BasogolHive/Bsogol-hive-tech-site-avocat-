@@ -11,4 +11,11 @@ export default {
   plugins: [
     require("flowbite/plugin")
   ],
+  theme: {
+  extend: {
+    fontFamily: {
+      garamond: ['"EB Garamond"', 'serif'],
+    },
+  },
+},
 };

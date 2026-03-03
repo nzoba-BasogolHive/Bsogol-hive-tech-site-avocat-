@@ -1,9 +1,10 @@
-import NavbarComponent from "./component/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Accueil from "./pages/Accueil";
 
 export default function App() {
   return (
-    <>
-      <NavbarComponent />
-    </>
+    <Routes>
+      <Route path="/" element={<Accueil />} />
+    </Routes>
   );
 }
