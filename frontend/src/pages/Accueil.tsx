@@ -2,6 +2,7 @@ import NavbarComponent from "../component/Navbar";
 import heroImg from "../assets/image (4) (1).webp"; // adapte le nom si besoin
 import slantedImg from "../assets/image (5).webp"; // adapte le nom
 import expertiseBg from "../assets/image (6) (1).webp"; // adapte le nom
+import { Link } from "react-router-dom";
 
 import icon1 from "../assets/droit-des-contrats.webp";
 import icone1 from "../assets/family (1) 1.webp";
@@ -12,6 +13,18 @@ import icon3 from "../assets/droit-penal.webp";
 import icon4 from "../assets/conformite-fiscale.webp";
 import icon5 from "../assets/droit-du-travail.webp";
 import icon6 from "../assets/droit-civil.webp";
+import avocat from "../assets/image (7).webp";
+import avocat1 from "../assets/image (8).webp";
+import { useState, useEffect } from "react";
+import ouragan from "../assets/clay-banks-BgjiQXpPZIY-unsplash.webp";
+import penal from "../assets/juneteenth-celebration-with-symbolic-representation-end-slavery-united-states.webp";
+import planning from "../assets/image (9).webp";
+import blessure from "../assets/closeup-young-man-with-knee-injury.webp";
+import immigration from "../assets/image (7).webp";
+import CTASection from "../component/CTASection";
+import FooterSection from "../component/FooterSection";
+
+
 
 export default function Accueil() {
   const expertises = [
@@ -46,6 +59,29 @@ export default function Accueil() {
     subtitle: "Résolution de litiges complexes",
   },
 ];
+const testimonials = [
+  {
+    name: "Claire",
+    text: "Excellent avocat. Matt et son équipe sont très réactifs et maîtrisent parfaitement le système. Nous avons collaboré sur de nombreux dossiers et je continuerai à faire appel à lui.",
+  },
+  {
+    name: "Jean Dupont",
+    text: "Une expertise remarquable et une réactivité exceptionnelle. Le cabinet a su défendre nos intérêts avec professionnalisme et efficacité.",
+  },
+  {
+    name: "Sophie Martin",
+    text: "Un accompagnement juridique sérieux et humain. L'équipe est toujours disponible et apporte des solutions adaptées.",
+  },
+];
+const [index, setIndex] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % testimonials.length);
+  }, 5000);
+
+  return () => clearInterval(interval);
+}, []);
   return (
     <div className="w-full min-h-screen bg-white">
       {/* HERO */}
@@ -248,221 +284,424 @@ export default function Accueil() {
     </div>
   </div>
   </section>
-{/* ================= A PROPOS ================= */}
-<section className="relative bg-gray-100 overflow-hidden mt-24">
+<section className="relative bg-white py-40 overflow-hidden">
 
-  {/* ===== ZONE IMAGE INCLINÉE ===== */}
-  <div className="relative h-[720px] overflow-visible">
+  {/* TITRE */}
+  <h2
+    className="absolute left-24 top-10 z-40 font-bold"
+    style={{
+      fontFamily: "Garamond, serif",
+      fontSize: "64px",
+      color: "#110767",
+    }}
+  >
+    A PROPOS
+  </h2>
 
-    {/* IMAGE */}
-    <img
-      src="src/assets/image (7).webp" // ⚠️ remplace par ton image
-      alt="A propos"
-      className="
-        absolute
-        left-1/2
-        top-[60px]
-        -translate-x-1/2
-        w-[150%]
-        max-w-none
-        rotate-[-7.51deg]
-        object-cover
-        z-10
-      "
-    />
+  {/* CONTENAIRE */}
+  <div className="relative h-[600px] flex items-center justify-center">
 
-    {/* OVERLAY EXACT */}
-    <div className="absolute inset-0 bg-[#1A0F7D]/[0.17] z-20 pointer-events-none" />
+    {/* CONTENAIRE ROTÉ */}
+    <div className="absolute w-[120%] h-[500px] bg-white rotate-[6deg] overflow-hidden flex items-center justify-center">
 
-    {/* ===== CARTE CENTRÉE DANS L’IMAGE ===== */}
-    <div className="absolute inset-0 flex items-center justify-center z-30">
-      <div className="bg-white shadow-2xl w-[917px] max-w-[92vw] p-10 text-center">
+      {/* IMAGE */}
+      <img
+        src="/src/assets/image (7).webp"
+        alt=""
+        className="
+          absolute
+          w-[140%]
+          max-w-none
+          object-cover
+          top-1/2
+          left-1/2
+          -translate-x-1/2
+          -translate-y-1/2
+          rotate-[-6deg]
+        "
+      />
 
-        <h3
-          className="mb-4 font-bold"
-          style={{
-            fontFamily: "Garamond, serif",
-            fontSize: "32px",
-          }}
-        >
-          Renforcement des lois sur la protection des données personnelles
-        </h3>
-
-        <p
-          className="mb-6 text-gray-600"
-          style={{
-            fontFamily: "Garamond, serif",
-            fontSize: "18px",
-          }}
-        >
-          De nouvelles lois modifient les règles de protection des données
-          personnelles afin de mieux encadrer leur utilisation et protéger
-          les droits des citoyens face aux nouvelles technologies.
-        </p>
-
-        <button
-          className="font-semibold hover:underline"
-          style={{
-            fontFamily: "Garamond, serif",
-            color: "#110767",
-          }}
-        >
-          EN SAVOIR PLUS
-        </button>
-      </div>
     </div>
 
-    {/* ===== TITRE A PROPOS (ZONE BLANCHE GAUCHE) ===== */}
-    <h2
-      className="absolute right-24 top-6 z-40 font-bold"
-      style={{
-        fontFamily: "Garamond, serif",
-        fontSize: "64px",
-        color: "#110767",
-      }}
-    >
-      A PROPOS
-    </h2>
+    {/* CARTE TEXTE */}
+    <div className="relative z-30 bg-white shadow-xl p-12 w-[900px] text-center">
 
-    {/* ===== COUPE BAS POUR RACCORDER EXPERTISE ===== */}
-    <div
-      className="absolute bottom-0 left-0 w-full h-40 bg-gray-100 z-30"
-      style={{
-        clipPath: "polygon(0 55%, 100% 0%, 100% 100%, 0% 100%)",
-      }}
-    />
+      <h3
+        className="mb-4 font-bold"
+        style={{ fontFamily: "Garamond, serif", fontSize: "30px" }}
+      >
+        Renforcement des lois sur la protection des données personnelles
+      </h3>
+
+      <p
+        className="text-gray-600 mb-6"
+        style={{ fontFamily: "Garamond, serif", fontSize: "18px" }}
+      >
+        De nouvelles lois modifient les règles de protection des données personnelles
+        afin de mieux encadrer leur utilisation et protéger les droits des citoyens.
+      </p>
+
+      <button
+        className="font-semibold hover:underline"
+        style={{ fontFamily: "Garamond, serif", color: "#110767" }}
+      >
+        EN SAVOIR PLUS
+      </button>
+
+    </div>
+
   </div>
+
 </section>
-{/* ================= NOS EXPERTISES ================= */}
-<section className="relative bg-gray-100 pt-32 pb-44 overflow-hidden">
+  {/* ===== NOS EXPERTISES ===== */}
+     <section className="relative w-full py-40 bg-white overflow-hidden">
 
-  {/* ===== IMAGE DIAGONALE DROITE ===== */}
-  <div className="absolute inset-0 pointer-events-none">
 
-    <img
-      src={expertiseBg}
-      alt=""
-      className="
-        absolute
-        right-[-18%]
-        top-[-12%]
-        w-[75%]
-        h-[145%]
-        object-cover
-        rotate-[14deg]
-        opacity-95
-      "
-    />
+        {/* IMAGE DIAGONALE */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${avocat})`,
+            filter: "brightness(0.85)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            
+            clipPath: "polygon(55% 0, 100% 0, 100% 100%, 35% 100%)"
+          }}
+        />
+        {/* CONTENU */}
+  <div className="relative z-10 max-w-[1600px] mx-auto">
 
-    {/* overlay très léger (image plus claire) */}
-    <div className="absolute inset-0 bg-white/20" />
-  </div>
 
-  {/* ===== PANNEAU BLANC HAUT (raccord A PROPOS) ===== */}
+        {/* TITRE */}
+        <div className="relative z-10 text-center mb-20">
+
+          <p className="text-[#9f1d1d]" style={{ fontFamily: "Garamond", fontSize: "22px" }}>
+            NOS EXPERTISES
+          </p>
+
+          <h2 className="font-bold text-[#110767]" style={{ fontFamily: "Garamond", fontSize: "38px" }}>
+            Domaines de Compétences
+          </h2>
+
+          <p className="max-w-3xl mx-auto mt-4 text-gray-700"
+             style={{ fontFamily: "Garamond", fontSize: "20px" }}>
+            Une équipe d'avocats spécialisés pour répondre à l'ensemble de vos besoins juridiques avec précision et efficacité.
+          </p>
+
+        </div> 
+        </div>
+
+        {/* CARDS */}
+        <div className="relative z-10 max-w-7xl mx-auto px-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+            {expertises.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-lg p-10 hover:-translate-y-3 hover:shadow-2xl transition duration-500"
+              >
+
+                <div className="w-[70px] h-[70px] mb-6">
+                  <img src={item.icon} alt={item.title} className="w-full h-full object-contain"/>
+                </div>
+
+                <h4 className="font-bold text-[#110767] mb-4"
+                    style={{ fontFamily: "Garamond", fontSize: "28px" }}>
+                  {item.title}
+                </h4>
+
+                <p className="mb-6 text-gray-700"
+                   style={{ fontFamily: "Garamond", fontSize: "18px" }}>
+                  {item.subtitle}
+                </p>
+
+                <button className="text-red-700 flex items-center gap-2 font-semibold hover:gap-4 transition-all">
+                  En savoir plus →
+                </button>
+
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+     <section className="relative py-32 overflow-hidden">
+
+  {/* IMAGE BACKGROUND */}
   <div
-    className="absolute top-0 left-0 w-full h-40 bg-gray-100 z-10"
+    className="absolute inset-0 bg-cover bg-center"
     style={{
-      clipPath: "polygon(0 0, 100% 0, 100% 35%, 0 100%)",
+      backgroundImage: `url(${avocat1})`,
+      filter: "brightness(0.8)"
     }}
   />
 
-  {/* ===== HEADER ===== */}
-  <div className="text-center mb-20 relative z-20 px-6">
+  {/* overlay */}
+  <div className="absolute inset-0 bg-black/50"></div>
+
+  {/* CONTENU */}
+  <div className="relative z-10 max-w-5xl mx-auto text-center text-white px-6">
 
     <h2
-      className="font-bold mb-4"
+      className="mb-10"
       style={{
         fontFamily: "Garamond, serif",
-        fontSize: "38px",
-        color: "#990f0f",
+        fontSize: "42px",
       }}
     >
-      NOS EXPERTISES
+      Pourquoi Les Entreprises Choisissent Notre Cabinet
     </h2>
 
-    <h3
-      className="font-bold mb-6"
-      style={{
-        fontFamily: "Garamond, serif",
-        fontSize: "32px",
-        color: "#110767",
-      }}
-    >
-      Domaines de Compétences
-    </h3>
+    {/* étoiles */}
+    <div className="flex justify-center gap-2 text-3xl mb-10">
+      {[...Array(5)].map((_, i) => (
+        <span key={i} className="animate-pulse">★</span>
+      ))}
+    </div>
 
-    <p
-      className="mx-auto max-w-4xl"
-      style={{
-        fontFamily: "Garamond, serif",
-        fontSize: "21px",
-        color: "#333",
-      }}
-    >
-      Une équipe d'avocats spécialisés pour répondre à l'ensemble de vos besoins juridiques avec précision et efficacité.
-    </p>
+    {/* CAROUSEL */}
+    <div className="overflow-hidden">
 
-  </div>
+      <div
+        className="flex transition-transform duration-700 ease-in-out"
+        style={{
+          transform: `translateX(-${index * 100}%)`,
+        }}
+      >
 
-  {/* ===== GRID CARTES PLUS GRANDES ===== */}
-  <div className="relative z-20 max-w-7xl mx-auto px-6">
+        {testimonials.map((t, i) => (
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div
+            key={i}
+            className="min-w-full px-10"
+          >
+            <p
+              className="leading-relaxed max-w-3xl mx-auto"
+              style={{
+                fontSize: "18px",
+                fontFamily: "Georgia, serif"
+              }}
+            >
+              {t.text}
+            </p>
 
-      {expertises.map((item, index) => (
-        <div
-          key={index}
-          className="
-            bg-white
-            rounded-2xl
-            shadow-xl
-            p-10
-            text-center
-            hover:shadow-2xl
-            transition
-            duration-300
-            min-h-[320px]
-          "
-        >
-          {/* icone plus grande */}
-          <div className="w-[110px] h-[90px] mx-auto mb-7">
-            <img
-              src={item.icon}
-              alt={item.title}
-              className="w-full h-full object-contain"
-            />
+            <h3
+              className="mt-12 text-4xl font-semibold"
+              style={{
+                fontFamily: "Garamond, serif"
+              }}
+            >
+              {t.name}
+            </h3>
           </div>
 
-          {/* titre */}
-          <h4
-            className="font-bold mb-4"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "30px",
-            }}
-          >
-            {item.title}
-          </h4>
+        ))}
 
-          {/* texte */}
-          <p
-            className="mb-8"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "22px",
-            }}
-          >
-            {item.subtitle}
-          </p>
+      </div>
 
-          {/* bouton */}
-          <button className="flex items-center gap-2 text-[#110767] font-semibold mx-auto hover:underline text-lg">
-            EN SAVOIR PLUS →
-          </button>
-        </div>
+    </div>
+
+    {/* indicateurs */}
+    <div className="flex justify-center gap-3 mt-10">
+
+      {testimonials.map((_, i) => (
+        <button
+          key={i}
+          onClick={() => setIndex(i)}
+          className={`w-3 h-3 rounded-full ${
+            i === index ? "bg-white" : "bg-white/40"
+          }`}
+        />
       ))}
 
     </div>
+
   </div>
+
 </section>
+{/* ================= ACTUALITES ================= */}
+
+<section className="w-full bg-[#f4f4f4] py-24 relative overflow-hidden">
+
+<div className="max-w-[1600px] mx-auto px-10">
+
+{/* TITRE */}
+<h2
+className="mb-16 font-bold text-[#0f1545]"
+style={{
+fontFamily: "Garamond, serif",
+fontSize: "64px",
+letterSpacing: "3px"
+}}
+>
+ACTUALITES RECENTS
+</h2>
+
+{/* ARTICLE PRINCIPAL */}
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+{/* IMAGE RONDE */}
+<div className="flex justify-center lg:justify-start">
+<img
+src={ouragan}
+alt="ouragan"
+className="w-[420px] h-[420px] object-cover rounded-full"
+/>
+</div>
+
+{/* TEXTE */}
+<div>
+
+<h3
+className="mb-6 text-[#0f1545]"
+style={{
+fontFamily: "Garamond, serif",
+fontSize: "48px",
+fontWeight: "600"
+}}
+>
+Dégâts causés par l'ouragan
+</h3>
+
+<p
+className="mb-6 text-gray-700"
+style={{
+fontFamily: "Garamond, serif",
+fontSize: "28px",
+lineHeight: "1.6"
+}}
+>
+Consultez des informations précieuses sur les demandes
+d'indemnisation pour dommages causés par un ouragan,
+avec la possibilité de contacter directement un avocat.
+</p>
+
+<button
+className="flex items-center gap-4 text-[#0f1545] font-semibold hover:gap-6 transition-all"
+style={{
+fontFamily: "Garamond, serif",
+fontSize: "22px"
+}}
+>
+EN SAVOIR PLUS
+<span>→</span>
+</button>
+
+</div>
+
+</div>
+
+
+{/* SOUS TITRE */}
+<p
+className="text-center mt-20 mb-16 text-gray-800"
+style={{
+fontFamily: "Garamond, serif",
+fontSize: "30px"
+}}
+>
+Sujets d'actualité en matière d'aide juridique
+</p>
+
+
+{/* ARTICLES SECONDAIRES */}
+
+<div className="grid grid-cols-2 md:grid-cols-4 gap-14 text-center">
+
+{/* ITEM */}
+<div>
+
+<img
+src={penal}
+alt=""
+className="w-[200px] h-[200px] object-cover rounded-full mx-auto mb-6"
+/>
+
+<h4
+style={{
+fontFamily: "Garamond, serif",
+fontSize: "22px"
+}}
+>
+DEFENSE PÉNALE
+</h4>
+
+</div>
+
+
+<div>
+
+<img
+src={planning}
+alt=""
+className="w-[200px] h-[200px] object-cover rounded-full mx-auto mb-6"
+/>
+
+<h4
+style={{
+fontFamily: "Garamond, serif",
+fontSize: "22px"
+}}
+>
+PLANIFICATION
+</h4>
+
+</div>
+
+
+<div>
+
+<img
+src={blessure}
+alt=""
+className="w-[200px] h-[200px] object-cover rounded-full mx-auto mb-6"
+/>
+
+<h4
+style={{
+fontFamily: "Garamond, serif",
+fontSize: "22px"
+}}
+>
+BLESSURES
+CORPORELLES
+</h4>
+
+</div>
+
+
+<div>
+
+<img
+src={immigration}
+alt=""
+className="w-[200px] h-[200px] object-cover rounded-full mx-auto mb-6"
+/>
+
+<h4
+style={{
+fontFamily: "Garamond, serif",
+fontSize: "22px"
+}}
+>
+DROIT DE
+L'IMMIGRATION
+</h4>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+  <>
+      <CTASection /> <br /><br />
+      <FooterSection />
+    </>
+
 </div>)}
