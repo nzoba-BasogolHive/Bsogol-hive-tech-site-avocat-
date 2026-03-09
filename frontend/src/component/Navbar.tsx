@@ -7,7 +7,7 @@ export default function NavbarComponent() {
 
       <Navbar
      
-        className="bg-[#D3D3D3] rounded-[15px] px-10 py-4 shadow-md max-w-5xl ml-auto mr-12"
+        className="bg-[#E8E8E8] rounded-[15px] px-10 py-4 shadow-md max-w-5xl ml-auto mr-12"
       >
         {/* Logo */}
         <NavbarBrand as={Link} href="/">

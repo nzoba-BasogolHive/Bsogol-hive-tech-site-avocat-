@@ -2,7 +2,7 @@ import { Footer } from "flowbite-react";
 
 export default function FooterSection() {
   return (
-    <Footer container className="bg-[#07073f] text-white">
+    <Footer container className="bg-[#07073f] text-white rounded-none">
       <div className="w-full px-10 py-16">
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -26,12 +26,12 @@ export default function FooterSection() {
             <h3 className="mb-4 font-semibold">NAVIGATION</h3>
 
             <ul className="space-y-2 text-gray-300">
-              <li>Accueil</li>
-              <li>A Propos</li>
-              <li>Equipe</li>
-              <li>Actualité</li>
-              <li>Contact</li>
-            </ul>
+  <li className="hover:text-white transition">Accueil</li>
+  <li className="hover:text-white transition">A Propos</li>
+  <li className="hover:text-white transition">Equipe</li>
+  <li className="hover:text-white transition">Actualité</li>
+  <li className="hover:text-white transition">Contact</li>
+</ul>
           </div>
 
 
