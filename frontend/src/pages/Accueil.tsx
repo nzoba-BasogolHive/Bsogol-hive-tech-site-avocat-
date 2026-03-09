@@ -1,13 +1,13 @@
 import NavbarComponent from "../component/Navbar";
 import heroImg from "../assets/image (4) (1).webp"; // adapte le nom si besoin
-import slantedImg from "../assets/image (5).webp"; // adapte le nom
-import expertiseBg from "../assets/image (6) (1).webp"; // adapte le nom
-import { Link } from "react-router-dom";
+/*import slantedImg from "../assets/image (5).webp"; // adapte le nom
+import expertiseBg from "../assets/image_6.webp"; // adapte le nom
+import { Link } from "react-router-dom";*/
 
 import icon1 from "../assets/droit-des-contrats.webp";
-import icone1 from "../assets/family (1) 1.webp";
+/*import icone1 from "../assets/family (1) 1.webp";
 import icone2 from "../assets/scale-of-justice 1.webp";
-import icone3 from "../assets/badge 1.webp";
+import icone3 from "../assets/badge 1.webp";*/
 import icon2 from "../assets/droit-immobilier.webp";
 import icon3 from "../assets/droit-penal.webp";
 import icon4 from "../assets/conformite-fiscale.webp";
