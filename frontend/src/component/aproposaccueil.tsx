@@ -1,10 +1,15 @@
+import Reveal from "./Reveal";
 export default function aproposaccueil() {
   return (
 <section className="relative w-full py-40 bg-white"
+
   style={{
     clipPath: "polygon(0 0, 100% 0, 100% 80%, 0 100%)"
   }}>
-
+ 
+<Reveal>
+  <section className="py-28">
+  
   {/* TITRE */}
   <h2
     className="absolute left-24 top-10 z-40 font-bold"
@@ -56,7 +61,7 @@ export default function aproposaccueil() {
         className="text-gray-600 mb-6"
         style={{ fontFamily: "Garamond, serif", fontSize: "18px" }}
       >
-        De nouvelles lois modifient les règles de protection des données personnelles
+       De nouvelles lois modifient les règles de protection des données personnelles
         afin de mieux encadrer leur utilisation et protéger les droits des citoyens.
       </p>
 
@@ -70,6 +75,9 @@ export default function aproposaccueil() {
     </div>
 
   </div>
+  
+  </section>
+</Reveal>
 
 </section>
   );

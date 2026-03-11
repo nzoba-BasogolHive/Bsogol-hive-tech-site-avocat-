@@ -3,14 +3,16 @@ import penal from "../assets/juneteenth-celebration-with-symbolic-representation
 import planning from "../assets/image (9).webp";
 import blessure from "../assets/closeup-young-man-with-knee-injury.webp";
 import immigration from "../assets/image (7).webp";
+import Reveal from "./Reveal";
 
 export default function actualitesaccueil() {
   return (
 <section className="w-full bg-[#f4f4f4] py-24 relative overflow-hidden">
 
 <div className="max-w-[1600px] mx-auto px-10">
-
-
+<Reveal>
+  <section className="py-28">
+  
 <h2
 className="mb-16 font-bold text-[#0f1545]"
 style={{
@@ -175,9 +177,13 @@ L'IMMIGRATION
 
 </div>
 
-</div>
+</div>  
+  </section>
+</Reveal>
+
 
 </div>
+  
 
 </section>
   );

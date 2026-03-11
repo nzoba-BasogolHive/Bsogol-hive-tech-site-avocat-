@@ -4,7 +4,7 @@ import icon3 from "../assets/droit-penal.webp";
 import icon4 from "../assets/conformite-fiscale.webp";
 import icon5 from "../assets/droit-du-travail.webp";
 import icon6 from "../assets/droit-civil.webp";
-
+import Reveal from "./Reveal";
 const expertises = [
   {
     icon: icon1,
@@ -41,7 +41,9 @@ const expertises = [
 export default function Expertiseaccueil() {
   return (
     <section className="relative w-full py-40 bg-white overflow-hidden -mt-48">
-
+<Reveal>
+  <section className="py-28">
+    
       {/* CONTENU */}
       <div className="relative z-10 max-w-[1600px] mx-auto">
 
@@ -122,6 +124,9 @@ export default function Expertiseaccueil() {
         </div>
 
       </div>
+     
+  </section>
+</Reveal>
 
     </section>
   );
