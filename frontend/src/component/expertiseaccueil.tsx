@@ -71,7 +71,7 @@ export default function Expertiseaccueil() {
             className="max-w-3xl mx-auto mt-6 text-gray-700"
             style={{ fontFamily: "Garamond", fontSize: "20px" }}
           >
-            Une équipe d'avocats spécialisés pour répondre à l'ensemble de vos besoins juridiques avec précision et efficacité.
+           Une équipe d'avocats spécialisés pour répondre à l'ensemble de vos besoins juridiques avec précision et efficacité.
           </p>
 
         </div>

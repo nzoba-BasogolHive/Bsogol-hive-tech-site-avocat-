@@ -8,21 +8,21 @@ const team = [
 name:"Maître Claire Dubois",
 role:"Associée fondatrice",
 specialite:"Droit civil & droit de la famille",
-image:"/src/assets/avocat1.jpg"
+image:"/src/assets/image_6.webp"
 },
 
 {
 name:"Maître Julien Moreau",
 role:"Associé",
 specialite:"Droit immobilier & responsabilité civile",
-image:"/src/assets/avocat2.jpg"
+image:"/src/assets/image (18).webp"
 },
 
 {
 name:"Maître Camille Lefèvre",
 role:"Avocate",
 specialite:"Droit des contrats & contentieux civil",
-image:"/src/assets/avocat3.jpg"
+image:"/src/assets/image (19).webp"
 }
 
 ]

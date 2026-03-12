@@ -7,21 +7,21 @@ const team = [
 name:"Maître Jean-Pierre Durand",
 role:"Associé fondateur",
 specialite:"Droit pénal & droit des affaires",
-image:"/src/assets/avocat1.jpg"
+image:"/src/assets/image (20).webp"
 },
 
 {
 name:"Maître Sophie Martin",
 role:"Associée",
 specialite:"Droit pénal & défense des victimes",
-image:"/src/assets/avocat2.jpg"
+image:"/src/assets/image_6.webp"
 },
 
 {
 name:"Maître Alexandre Petit",
 role:"Associé",
 specialite:"Droit des sociétés",
-image:"/src/assets/avocat3.jpg"
+image:"/src/assets/image (16).webp"
 }
 
 ]

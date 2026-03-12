@@ -1,28 +1,28 @@
 import Reveal from "./Reveal";
 
-export default function EquipeAffaires() {
+export default function EquipeTravail() {
 
 const team = [
 
 {
-name:"Maître Laurent Bernard",
+name:"Maître Jean Dupont",
 role:"Associé fondateur",
-specialite:"Droit des sociétés & gouvernance d'entreprise",
+specialite:"Droit du travail & relations sociales",
 image:"/src/assets/image (20).webp"
 },
 
 {
-name:"Maître Sophie Garnier",
+name:"Maître Marie Lefèvre",
 role:"Associée",
-specialite:"Contrats commerciaux & droit commercial",
-image:"/src/assets/image (21).webp"
+specialite:"Contentieux prud’homal & licenciement",
+image:"/src/assets/image (12).webp"
 },
 
 {
-name:"Maître Nicolas Petit",
+name:"Maître Thomas Martin",
 role:"Avocat",
-specialite:"Contentieux des affaires & fusions-acquisitions",
-image:"/src/assets/image (18).webp"
+specialite:"Contrats de travail & négociations sociales",
+image:"/src/assets/image (19).webp"
 }
 
 ]
@@ -38,13 +38,13 @@ Découvrez Notre Équipe
 </h2>
 
 <h3 className="text-xl font-semibold mb-6">
-Des Experts en Droit des Affaires
+Des Experts en Droit du Travail
 </h3>
 
 <p className="text-gray-600 max-w-3xl mx-auto mb-16">
-Notre équipe accompagne les entreprises, dirigeants et investisseurs
-dans toutes les problématiques juridiques liées à la vie des sociétés,
-aux opérations commerciales et aux litiges économiques.
+Notre équipe accompagne les employeurs et les salariés dans toutes
+les problématiques liées au droit du travail : contrats, relations
+sociales, licenciements et contentieux prud’homaux.
 </p>
 
 {/* GRID */}

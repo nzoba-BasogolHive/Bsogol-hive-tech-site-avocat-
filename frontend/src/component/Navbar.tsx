@@ -1,11 +1,12 @@
 import { Navbar, NavbarBrand } from "flowbite-react";
 import { Link, NavLink } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
-
+import ServicesOverlay from "./ServicesOverlay";
 export default function NavbarComponent() {
 
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+const [openServices,setOpenServices] = useState(false)
 
   // fermeture automatique quand on clique ailleurs
   useEffect(() => {
@@ -21,8 +22,9 @@ export default function NavbarComponent() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
+  
   return (
+    
 
     <div className="pt-8 px-12">
 
@@ -60,45 +62,14 @@ export default function NavbarComponent() {
           </NavLink>
 
 
-          {/* SERVICES */}
-          <div className="relative">
+         <nav className="flex gap-10">
 
-            <button
-              onClick={() => setOpen(!open)}
-              className="text-gray-800 font-medium hover:text-black"
-            >
-              Services
-            </button>
+<button onClick={()=>setOpen(true)}>
+Services
+</button>
+ <ServicesOverlay open={open} setOpen={setOpen} />
+</nav>
 
-            <div
-              className={`absolute left-0 top-10 bg-white shadow-lg w-52 p-4 space-y-3 rounded-lg
-              transition-all duration-300
-              ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 pointer-events-none"}`}
-            >
-
-              <NavLink to="/droit-penal" onClick={() => setOpen(false)} className="block hover:text-red-600">
-                Droit pénal
-              </NavLink>
-
-              <NavLink to="/droit-civil" onClick={() => setOpen(false)} className="block hover:text-red-600">
-                Droit civil
-              </NavLink>
-
-              <NavLink to="/droit-affaires" onClick={() => setOpen(false)} className="block hover:text-red-600">
-                Droit des affaires
-              </NavLink>
-
-              <NavLink to="/droit-travail" onClick={() => setOpen(false)} className="block hover:text-red-600">
-                Droit du travail
-              </NavLink>
-
-              <NavLink to="/droit-fiscal" onClick={() => setOpen(false)} className="block hover:text-red-600">
-                Droit fiscal
-              </NavLink>
-
-            </div>
-
-          </div>
 
 
           {/* ACTUALITES */}

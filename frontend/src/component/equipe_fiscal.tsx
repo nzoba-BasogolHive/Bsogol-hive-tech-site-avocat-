@@ -1,28 +1,32 @@
 import Reveal from "./Reveal";
 
-export default function EquipeAffaires() {
+import avocat1 from "../assets/image (17).webp";
+import avocat2 from "../assets/image (16).webp";
+import avocat3 from "../assets/image_6.webp";
+
+export default function EquipeFiscal() {
 
 const team = [
 
 {
-name:"Maître Laurent Bernard",
+name:"Maître Jean-Pierre Durand",
 role:"Associé fondateur",
-specialite:"Droit des sociétés & gouvernance d'entreprise",
-image:"/src/assets/image (20).webp"
+specialite:"Droit fiscal des entreprises & optimisation fiscale",
+image: avocat1
 },
 
 {
-name:"Maître Sophie Garnier",
+name:"Maître Sophie Martin",
 role:"Associée",
-specialite:"Contrats commerciaux & droit commercial",
-image:"/src/assets/image (21).webp"
+specialite:"Contentieux fiscal & contrôle fiscal",
+image: avocat2
 },
 
 {
-name:"Maître Nicolas Petit",
-role:"Avocat",
-specialite:"Contentieux des affaires & fusions-acquisitions",
-image:"/src/assets/image (18).webp"
+name:"Maître Alexandre Petit",
+role:"Associé",
+specialite:"Fiscalité internationale & fiscalité patrimoniale",
+image: avocat3
 }
 
 ]
@@ -38,13 +42,13 @@ Découvrez Notre Équipe
 </h2>
 
 <h3 className="text-xl font-semibold mb-6">
-Des Experts en Droit des Affaires
+Des Experts en Droit Fiscal
 </h3>
 
 <p className="text-gray-600 max-w-3xl mx-auto mb-16">
-Notre équipe accompagne les entreprises, dirigeants et investisseurs
-dans toutes les problématiques juridiques liées à la vie des sociétés,
-aux opérations commerciales et aux litiges économiques.
+Notre équipe accompagne les entreprises et les particuliers dans la gestion
+de leurs obligations fiscales, l’optimisation de leur fiscalité et la défense
+de leurs intérêts face à l’administration fiscale.
 </p>
 
 {/* GRID */}
