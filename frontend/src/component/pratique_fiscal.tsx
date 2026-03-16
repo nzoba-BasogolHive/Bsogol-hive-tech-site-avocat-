@@ -1,6 +1,6 @@
 import { FaCheckCircle } from "react-icons/fa";
 import Reveal from "./Reveal";
-
+import { Link } from "react-router-dom";
 export default function FiscalPractice() {
   return (
     <section className="py-24 bg-gray-50">
@@ -24,10 +24,11 @@ export default function FiscalPractice() {
             </p>
 
             {/* bouton */}
-            <button className="bg-red-700 text-white px-8 py-4 rounded-lg text-lg font-medium 
+             <Link
+to="/contact"className="bg-red-700 text-white px-8 py-4 rounded-lg text-lg font-medium 
             hover:bg-red-800 transition transform hover:scale-105 shadow-lg">
               Nous consulter →
-            </button>
+            </Link>
 
           </div>
         </Reveal>

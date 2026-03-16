@@ -6,7 +6,7 @@ import Expertiseaccueil from "../component/expertiseaccueil";
 import Nos_particularites from "../component/nos_particularites";
 import CTASection from "../component/CTASection";
 import FooterSection from "../component/FooterSection";
-
+import Footer from "../component/footer";
 export default function Accueil() {
   return (
     <div>
@@ -24,7 +24,7 @@ export default function Accueil() {
       <CTASection /> <br /><br /><br /> <br /><br />
 
       <FooterSection />
-
+<Footer/>
     </div>
   );
 }

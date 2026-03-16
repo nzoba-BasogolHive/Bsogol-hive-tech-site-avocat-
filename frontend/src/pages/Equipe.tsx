@@ -3,6 +3,7 @@ import Hero_equipe from "../component/hero_equipe";
 import List_equipe from "../component/list_equipe";
 import CTASection from "../component/CTASection";
 import FooterSection from "../component/FooterSection";
+import Footer from "../component/footer";
 
 export default function Apropos () {
   return (
@@ -15,6 +16,7 @@ export default function Apropos () {
    
 
     <FooterSection/>
+    <Footer/>
   </div>
   );
 }

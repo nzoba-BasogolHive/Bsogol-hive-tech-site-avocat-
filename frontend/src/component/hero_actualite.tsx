@@ -1,90 +1,65 @@
-
 import image10 from "../assets/image (23).webp";
-
 import NavbarComponent from "./Navbar";
 
 export default function Hero() {
   return (
-    <>
+    <section className="relative w-full min-h-screen overflow-hidden">
 
-      {/* HERO */}
-      <section className="relative w-full max-w-[1980px] mx-auto h-[611px] overflow-hidden ">
+      {/* IMAGE */}
+      <img
+        src={image10}
+        alt="hero"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-        {/* Image de fond */}
-        <img
-          src={ image10}
-          alt="hero"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#110767]/90 via-[#110767]/70 to-[#110767]/40"></div>
 
-        {/* Overlay couleur */}
-        <div className="absolute inset-0 bg-[#110767]/75"></div>
+      {/* NAVBAR */}
+      <div className="absolute top-0 left-0 w-full z-20">
+        <NavbarComponent />
+      </div>
 
-        {/* Navbar */}
-        <div className="absolute top-0 left-0 w-full z-20">
-          <div className="pt-8 px-12">
-            <NavbarComponent />
-          </div>
-        </div>
+      {/* CONTENU */}
+      <div className="relative z-10 flex items-center min-h-screen">
 
-        {/* Contenu texte */}
-        <div className="relative z-10 h-full">
-              <h1
-            className="absolute text-white font-bold leading-tight"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "50px",
-              left: "312px",
-              top: "402px",
-            }}
-          >
-         BLOG JURIDIQUES 
-          </h1>
+        <div className="max-w-6xl mx-auto px-6 md:px-8 text-white">
 
-          <h1
-            className="absolute text-white font-bold leading-tight"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "96px",
-              left: "312px",
-              top: "402px",
-            }}
-          >
-           Actualités Juridiques
-          </h1>
-
-          <p
-            className="absolute text-white font-bold"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "40px",
-              left: "293px",
-              top: "607px",
-              width: "1485px",
-              height: "190px",
-            }}
-          >
-           Restez informé des dernières évolutions du droit et des conseils 
-           pratiques de nos avocats pour mieux comprendre vos droits.
+          {/* PETIT TITRE */}
+          <p className="uppercase tracking-[3px] md:tracking-[4px] text-xs sm:text-sm mb-4 text-gray-200">
+            Blog Juridique
           </p>
 
-          {/* Contact */}
-          <div
-            className="absolute flex items-center gap-4 text-white font-bold cursor-pointer group"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "40px",
-              left: "111px",
-              top: "850px",
-              width: "403px",
-              height: "49px",
-            }}
-          >
-           
+          {/* TITRE */}
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+            Actualités <br />
+            <span className="text-red-500">Juridiques</span>
+          </h1>
+
+          {/* TEXTE */}
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-xl md:max-w-2xl mb-8">
+            Restez informé des dernières évolutions du droit et découvrez
+            les conseils pratiques de nos avocats pour mieux comprendre
+            vos droits et défendre vos intérêts.
+          </p>
+
+          {/* BOUTONS */}
+          <div className="flex flex-col sm:flex-row gap-4">
+
+            <button className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-medium transition">
+              Lire les articles
+            </button>
+
+            <button className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition">
+              Contacter un avocat
+            </button>
+
           </div>
 
         </div>
-      </section>
 
+      </div>
 
-     </>);}
+    </section>
+  );
+}

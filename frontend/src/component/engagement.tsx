@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Reveal from "./Reveal";
+
 export default function Piliers() {
 
   const cards = [
@@ -21,76 +22,73 @@ export default function Piliers() {
   ];
 
   return (
-    <section className="py-32 bg-[#f6f6f8]">
-        <Reveal>
-  <section className="py-28">
-   
+    <section className="py-16 md:py-24 lg:py-32 bg-[#f6f6f8]">
 
-      {/* TITRE */}
-      <div className="text-center mb-24">
+      <Reveal>
 
-        <motion.h2
-          initial={{opacity:0,y:40}}
-          whileInView={{opacity:1,y:0}}
-          transition={{duration:0.7}}
-          className="text-5xl mb-6"
-          style={{fontFamily:"Garamond"}}
-        >
-          Les Piliers de Notre Engagement
-        </motion.h2>
+        {/* TITRE */}
+        <div className="text-center mb-16 md:mb-20 lg:mb-24 px-6">
 
-        {/* Ligne décorative */}
-        <motion.div
-          initial={{width:0}}
-          whileInView={{width:"120px"}}
-          transition={{duration:0.8}}
-          className="h-[3px] bg-[#110767] mx-auto"
-        ></motion.div>
-
-      </div>
-
-
-      {/* CARTES */}
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 px-6">
-
-        {cards.map((card,i)=>(
-          <motion.div
-            key={i}
-            initial={{opacity:0,y:80}}
-            whileInView={{opacity:1,y:0}}
-            transition={{delay:i*0.2,duration:0.6}}
-            whileHover={{y:-14,scale:1.03}}
-            className="relative bg-white rounded-xl p-12 text-center shadow-lg overflow-hidden"
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-2xl md:text-4xl lg:text-5xl mb-6"
+            style={{ fontFamily: "Garamond" }}
           >
+            Les Piliers de Notre Engagement
+          </motion.h2>
 
-            {/* Effet lumière */}
-            <div className="absolute inset-0 opacity-0 hover:opacity-100 transition duration-500 bg-gradient-to-br from-transparent via-[#11076710] to-transparent"></div>
+          {/* Ligne décorative */}
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "120px" }}
+            transition={{ duration: 0.8 }}
+            className="h-[3px] bg-[#110767] mx-auto"
+          ></motion.div>
 
-            {/* Icône */}
-            <div className="w-24 h-24 mx-auto mb-8 flex items-center justify-center rounded-full bg-[#e8ecf5] text-4xl shadow-inner">
-              {card.icon}
-            </div>
+        </div>
 
-            {/* Titre */}
-            <h3
-              className="text-3xl font-bold mb-6"
-              style={{fontFamily:"Garamond"}}
+        {/* CARTES */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 px-6">
+
+          {cards.map((card, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2, duration: 0.6 }}
+              whileHover={{ y: -14, scale: 1.03 }}
+              className="relative bg-white rounded-xl p-8 md:p-10 lg:p-12 text-center shadow-lg overflow-hidden"
             >
-              {card.title}
-            </h3>
 
-            {/* Texte */}
-            <p className="text-gray-600 leading-relaxed">
-              {card.text}
-            </p>
+              {/* Effet lumière */}
+              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition duration-500 bg-gradient-to-br from-transparent via-[#11076710] to-transparent"></div>
 
-          </motion.div>
-        ))}
+              {/* Icône */}
+              <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 mx-auto mb-6 md:mb-8 flex items-center justify-center rounded-full bg-[#e8ecf5] text-3xl md:text-4xl shadow-inner">
+                {card.icon}
+              </div>
 
-      </div>
-      
-  </section>
-</Reveal>
+              {/* Titre */}
+              <h3
+                className="text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6"
+                style={{ fontFamily: "Garamond" }}
+              >
+                {card.title}
+              </h3>
+
+              {/* Texte */}
+              <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                {card.text}
+              </p>
+
+            </motion.div>
+          ))}
+
+        </div>
+
+      </Reveal>
 
     </section>
   );

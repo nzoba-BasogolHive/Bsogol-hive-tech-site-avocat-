@@ -27,49 +27,70 @@ text: "Assistance dans les négociations ou représentation devant les juridicti
 
 return (
 
-  <section className="bg-[#1E1671] py-24 text-white">
-    <div className="max-w-7xl mx-auto px-8">
+<section className="relative bg-[#110767] py-16 md:py-24 text-white overflow-hidden">
 
-```
-  <p className="text-center uppercase tracking-widest text-gray-300 mb-4">
-    Méthodologie
-  </p>
+{/* pattern discret */}
 
-  <h2 className="text-4xl font-bold text-center mb-16">
-    Notre processus d'intervention
-  </h2>
+<div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
 
-  <div className="grid md:grid-cols-4 gap-12 text-center">
+<div className="relative max-w-7xl mx-auto px-6">
 
-    {steps.map((step, index) => (
+{/* TITRE */}
 
-      <Reveal key={index}>
+<p className="text-center uppercase tracking-widest text-gray-300 mb-4 text-xs md:text-sm">
+Méthodologie
+</p>
 
-        <div className="flex flex-col items-center">
+<h2 className="text-2xl md:text-4xl font-bold text-center mb-12 md:mb-16">
+Notre processus d'intervention
+</h2>
 
-          <div className="w-20 h-20 flex items-center justify-center border-4 border-red-500 rounded-full text-xl font-bold mb-6 hover:scale-110 transition">
-            {step.number}
-          </div>
+{/* GRID */}
 
-          <h3 className="font-semibold mb-2">
-            {step.title}
-          </h3>
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 text-center">
 
-          <p className="text-sm text-gray-300 max-w-xs">
-            {step.text}
-          </p>
+{steps.map((step,index)=>(
 
-        </div>
+<Reveal key={index}>
 
-      </Reveal>
+<div className="flex flex-col items-center group">
 
-    ))}
+{/* NUMERO */}
 
-  </div>
+<div className="relative mb-6">
+
+<div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center border-4 border-[#c9a227] rounded-full text-lg md:text-xl font-bold transition duration-500 group-hover:scale-110 group-hover:bg-[#c9a227] group-hover:text-[#110767]">
+
+{step.number}
 
 </div>
-```
 
-  </section>
-);
+</div>
+
+{/* TITRE */}
+
+<h3 className="font-semibold mb-3 text-base md:text-lg">
+{step.title}
+</h3>
+
+{/* TEXTE */}
+
+<p className="text-sm text-gray-300 max-w-xs leading-relaxed">
+{step.text}
+</p>
+
+</div>
+
+</Reveal>
+
+))}
+
+</div>
+
+</div>
+
+</section>
+
+)
+
 }

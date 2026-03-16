@@ -1,79 +1,64 @@
-
 import image10 from "../assets/image (10).webp";
-
 import NavbarComponent from "./Navbar";
 
 export default function Hero() {
   return (
-    <>
+    <section className="relative w-full max-w-[1980px] mx-auto h-[520px] md:h-[700px] lg:h-[900px] overflow-hidden">
 
-      {/* HERO */}
-      <section className="relative w-full max-w-[1980px] mx-auto h-[989px] overflow-hidden ">
+      {/* Image de fond */}
 
-        {/* Image de fond */}
-        <img
-          src={ image10}
-          alt="hero"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+      <img
+        src={image10}
+        alt="hero"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-        {/* Overlay couleur */}
-        <div className="absolute inset-0 bg-[#110767]/75"></div>
+      {/* Overlay */}
 
-        {/* Navbar */}
-        <div className="absolute top-0 left-0 w-full z-20">
-          <div className="pt-8 px-12">
-            <NavbarComponent />
-          </div>
+      <div className="absolute inset-0 bg-[#110767]/75"></div>
+
+
+      {/* Navbar */}
+
+      <div className="absolute top-0 left-0 w-full z-20">
+        <div className="pt-6 md:pt-16 px-6 md:px-12">
+          <NavbarComponent />
         </div>
+      </div>
 
-        {/* Contenu texte */}
-        <div className="relative z-10 h-full">
+
+      {/* CONTENU */}
+
+      <div className="relative z-10 h-full flex items-center">
+
+        <div className="max-w-6xl mx-auto px-6 md:px-10 text-white">
+
+          {/* TITRE */}
 
           <h1
-            className="absolute text-white font-bold leading-tight"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "96px",
-              left: "312px",
-              top: "402px",
-            }}
+            className="font-bold leading-tight mb-6 text-3xl sm:text-4xl md:text-6xl lg:text-7xl"
+            style={{ fontFamily: "Garamond, serif" }}
           >
-            À PROPOS DE LA JUSTICE A TOUT PRIX 
+            À PROPOS DE LA JUSTICE <br />
+            A TOUT PRIX
           </h1>
 
+
+          {/* TEXTE */}
+
           <p
-            className="absolute text-white font-bold"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "40px",
-              left: "293px",
-              top: "607px",
-              width: "1485px",
-              height: "190px",
-            }}
+            className="font-medium max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl"
+            style={{ fontFamily: "Garamond, serif" }}
           >
-            Nous offrons à nos clients une représentation juridique de haut niveau afin que chacun se sente 
-            soutenu et préparé face au système judiciaire familial.
+            Nous offrons à nos clients une représentation juridique
+            de haut niveau afin que chacun se sente soutenu et préparé
+            face au système judiciaire familial.
           </p>
 
-          {/* Contact */}
-          <div
-            className="absolute flex items-center gap-4 text-white font-bold cursor-pointer group"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "40px",
-              left: "111px",
-              top: "850px",
-              width: "403px",
-              height: "49px",
-            }}
-          >
-           
-          </div>
-
         </div>
-      </section>
 
+      </div>
 
-     </>);}
+    </section>
+  );
+}

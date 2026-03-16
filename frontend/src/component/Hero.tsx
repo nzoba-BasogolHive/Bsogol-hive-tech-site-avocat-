@@ -1,168 +1,131 @@
-
 import heroImg from "../assets/image (4) (1).webp";
 import icone1 from "../assets/family (1) 1.webp";
 import icone2 from "../assets/scale-of-justice 1.webp";
 import icone3 from "../assets/badge 1.webp";
 import NavbarComponent from "./Navbar";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
     <>
-
       {/* HERO */}
-      <section className="relative w-full max-w-[1980px] mx-auto h-[989px] overflow-hidden ">
+      <section className="relative w-full min-h-screen overflow-hidden">
 
-        {/* Image de fond */}
+        {/* IMAGE */}
         <img
           src={heroImg}
           alt="hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* Overlay couleur */}
+        {/* OVERLAY */}
         <div className="absolute inset-0 bg-[#110767]/75"></div>
 
-        {/* Navbar */}
+        {/* NAVBAR */}
         <div className="absolute top-0 left-0 w-full z-20">
-          <div className="pt-8 px-12">
+          <div className="pt-4 md:pt-8 px-6 md:px-12">
             <NavbarComponent />
           </div>
         </div>
 
-        {/* Contenu texte */}
-        <div className="relative z-10 h-full">
+        {/* CONTENU */}
+        <div className="relative z-10 min-h-screen flex items-center">
 
-          <h1
-            className="absolute text-white font-bold leading-tight"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "96px",
-              left: "312px",
-              top: "402px",
-            }}
-          >
-            La Justice au Service de Vos Droits
-          </h1>
+          <div className="max-w-6xl mx-auto px-6 text-white">
 
-          <p
-            className="absolute text-white font-bold"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "40px",
-              left: "293px",
-              top: "607px",
-              width: "1485px",
-              height: "190px",
-            }}
-          >
-            Notre cabinet d'avocats vous accompagne avec rigueur et détermination dans toutes vos démarches juridiques.
-            Une expertise reconnue, un engagement sans faille.
-          </p>
+            <h1
+              className="font-bold leading-tight mb-6 text-3xl sm:text-4xl md:text-6xl lg:text-7xl"
+              style={{ fontFamily: "Garamond, serif" }}
+            >
+              La Justice au Service <br />
+              de Vos Droits
+            </h1>
 
-          {/* Contact */}
-          <div
-            className="absolute flex items-center gap-4 text-white font-bold cursor-pointer group"
-            style={{
-              fontFamily: "Garamond, serif",
-              fontSize: "40px",
-              left: "111px",
-              top: "850px",
-              width: "403px",
-              height: "49px",
-            }}
-          >
-            <span className="group-hover:underline">
-              NOUS CONTACTEZ
-            </span>
+            <p
+              className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mb-8"
+              style={{ fontFamily: "Garamond, serif" }}
+            >
+              Notre cabinet d'avocats vous accompagne avec rigueur et
+              détermination dans toutes vos démarches juridiques.
+              Une expertise reconnue, un engagement sans faille.
+            </p>
 
-            <span className="transition-transform group-hover:translate-x-6">
-              →
-            </span>
+            <Link
+              to="/contact"
+              className="bg-red-600 text-white px-6 py-3 rounded-md hover:bg-red-700 transition"
+            >
+              Nous contacter
+            </Link>
+
           </div>
 
         </div>
+
       </section>
 
 
-      {/* ===== SECTION 3 BLOCS ===== */}
-      <section className="w-full flex justify-center mt-20 px-6">
+      {/* SECTION 3 BLOCS */}
+      <section className="w-full flex justify-center px-6 -mt-16 md:-mt-24 relative z-30">
 
-        <div className="relative w-full max-w-[1600px] bg-white rounded-[20px] shadow-xl py-12 px-16">
+        <div className="w-full max-w-6xl bg-white rounded-2xl shadow-2xl p-6 md:p-10">
 
-          <div className="grid grid-cols-3 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
             {/* BLOC 1 */}
-            <div className="flex items-center gap-6 pr-12">
+            <div className="flex items-center gap-4">
 
               <img
                 src={icone1}
-                alt="icone1"
-                className="w-[90px] h-[90px] object-contain"
+                alt="icone"
+                className="w-14 h-14 md:w-20 md:h-20 object-contain"
               />
 
               <p
-                className="text-[#110767]"
-                style={{
-                  fontFamily: "Garamond, serif",
-                  fontSize: "24px",
-                  width: "196px",
-                  height: "100px",
-                }}
+                className="text-[#110767] text-sm md:text-lg"
+                style={{ fontFamily: "Garamond, serif" }}
               >
-                Respect et Diginty
-                <b> Nos clients sont comme une famille</b>
+                Respect et Dignité <br />
+                <b>Nos clients sont comme une famille</b>
               </p>
 
             </div>
 
-            <div className="pointer-events-none absolute left-1/3 top-6 bottom-6 w-px bg-gray-200"></div>
 
             {/* BLOC 2 */}
-            <div className="flex items-center justify-center gap-6 px-12">
+            <div className="flex items-center gap-4">
 
               <img
                 src={icone2}
-                alt="icon"
-                className="w-[90px] h-[90px] object-contain"
+                alt="icone"
+                className="w-14 h-14 md:w-20 md:h-20 object-contain"
               />
 
               <p
-                className="text-[#110767]"
-                style={{
-                  fontFamily: "Garamond, serif",
-                  fontSize: "24px",
-                  width: "196px",
-                  height: "100px",
-                }}
+                className="text-[#110767] text-sm md:text-lg"
+                style={{ fontFamily: "Garamond, serif" }}
               >
-                Chaque cas est unique
-                <b> Représentation juridique de haut niveau</b>
+                Chaque cas est unique <br />
+                <b>Représentation juridique de haut niveau</b>
               </p>
 
             </div>
 
-            <div className="pointer-events-none absolute left-2/3 top-6 bottom-6 w-px bg-gray-200"></div>
 
             {/* BLOC 3 */}
-            <div className="flex items-center justify-end gap-6 pl-12">
+            <div className="flex items-center gap-4">
 
               <img
                 src={icone3}
-                alt="icon"
-                className="w-[90px] h-[90px] object-contain"
+                alt="icone"
+                className="w-14 h-14 md:w-20 md:h-20 object-contain"
               />
 
               <p
-                className="text-[#110767]"
-                style={{
-                  fontFamily: "Garamond, serif",
-                  fontSize: "24px",
-                  width: "196px",
-                  height: "100px",
-                }}
+                className="text-[#110767] text-sm md:text-lg"
+                style={{ fontFamily: "Garamond, serif" }}
               >
-                Équipe expérimentée
-                <b> Avocats dévoués et primés</b>
+                Équipe expérimentée <br />
+                <b>Avocats dévoués et primés</b>
               </p>
 
             </div>
@@ -172,7 +135,6 @@ export default function Hero() {
         </div>
 
       </section>
-
     </>
   );
 }

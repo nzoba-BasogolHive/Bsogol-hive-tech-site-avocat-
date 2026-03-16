@@ -5,17 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite-react/lib/esm/**/*.js",
   ],
+
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        garamond: ['"EB Garamond"', "serif"],
+      },
+    },
   },
+
   plugins: [
     require("flowbite/plugin")
   ],
-  theme: {
-  extend: {
-    fontFamily: {
-      garamond: ['"EB Garamond"', 'serif'],
-    },
-  },
-},
 };

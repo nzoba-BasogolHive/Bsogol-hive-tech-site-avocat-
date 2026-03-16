@@ -1,109 +1,87 @@
-import { FaBalanceScale, FaUser } from "react-icons/fa";
+import { FaCalendarAlt, FaUser } from "react-icons/fa";
+import PageTransition from "../component/PageTransition";
 
-export default function ArticlesSection() {
-
-const categories = [
-"Tous",
-"Droit civil",
-"Droit pénal",
-"Droit fiscal",
-"Droit du travail",
-"Droit des affaires"
-];
+export default function ArticlePage() {
 
 return (
 
-<section className="bg-gray-100 py-10">
+<PageTransition>
 
-<div className="max-w-7xl mx-auto px-6">
+<section className="bg-gray-100 py-12 md:py-16">
 
-{/* FILTRES */}
-
-<div className="flex flex-wrap gap-3 mb-6">
-
-{categories.map((cat,index)=>(
-
-<button
-key={index}
-className={`px-5 py-1.5 rounded-full border text-sm
-${index === 0
-? "bg-[#1E1671] text-white"
-: "bg-white border-gray-300 hover:bg-gray-200"
-}`}
->
-{cat}
-</button>
-
-))}
-
-</div>
+<div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
 
 
-{/* ARTICLE */}
+<div className="relative">
 
-<div className="bg-white rounded-lg shadow-sm overflow-hidden flex flex-col md:flex-row">
-
-{/* IMAGE */}
-
-<div className="md:w-1/2">
 <img
-src="/src/assets/image3.webp"
-alt="article"
-className="w-full h-[260px] object-cover"
+src="/src/assets/image (24).webp"
+className="w-full h-[220px] md:h-[320px] object-cover"
 />
+
+<span className="absolute bottom-4 left-4 bg-red-700 text-white px-4 py-1 rounded-full text-sm">
+Droit Des Affaires
+</span>
+
 </div>
 
 
-{/* CONTENU */}
+<div className="p-6 md:p-10">
 
-<div className="md:w-1/2 p-6 flex flex-col justify-between">
-
-<div>
-
-{/* META */}
-
-<div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+<div className="flex flex-wrap items-center gap-6 text-gray-500 text-sm mb-6">
 
 <div className="flex items-center gap-2">
-<FaBalanceScale />
-<span>Droit civil</span>
-</div>
-
+<FaCalendarAlt/>
 <span>15 février 2025</span>
+</div>
+
+<div className="flex items-center gap-2">
+<FaUser/>
+<span>Maître Alexandre Petit</span>
+</div>
 
 </div>
 
-{/* TITRE */}
 
-<h3 className="text-xl font-semibold mb-3">
-Les nouvelles règles du divorce par consentement mutuel
-</h3>
+<h1 className="text-2xl md:text-3xl font-semibold mb-6">
+Protection des données personnelles : les obligations des entreprises
+</h1>
 
-{/* TEXTE */}
 
-<p className="text-gray-600 text-sm leading-relaxed mb-4">
-Depuis la réforme de 2017, le divorce par consentement mutuel peut
-se faire sans passage devant le juge. Quelles sont les implications
-pratiques ?
+<div className="border-l-4 border-yellow-500 pl-4 italic text-gray-600 mb-8">
+Le RGPD impose des obligations strictes aux entreprises.
+Tour d'horizon des principales mesures à mettre en place.
+</div>
+
+
+<div className="space-y-6 text-gray-700 leading-relaxed">
+
+<p>
+Notre cabinet d'avocats suit de près les évolutions législatives et
+jurisprudentielles dans ce domaine.
+</p>
+
+<p>
+Les professionnels du droit doivent adapter leurs pratiques aux
+nouvelles règles en vigueur.
+</p>
+
+<p>
+Nos avocats spécialisés sont à votre disposition pour vous accompagner.
 </p>
 
 </div>
 
 
-{/* FOOTER */}
+<div className="mt-10 flex flex-col md:flex-row gap-4 md:justify-between md:items-center">
 
-<div className="flex justify-between items-center text-sm">
+<p className="text-gray-600">
+Vous avez une question sur ce sujet ?
+</p>
 
-<div className="flex items-center gap-2 text-gray-600">
-<FaUser />
-<span>Maître Sophie Martin</span>
-</div>
-
-<button className="text-red-600 font-medium hover:underline">
-Lire l'article →
+<button className="bg-[#1E1671] text-white px-6 py-3 rounded-md hover:bg-[#151057] transition">
+Consulter un avocat →
 </button>
-
-</div>
 
 </div>
 
@@ -112,6 +90,8 @@ Lire l'article →
 </div>
 
 </section>
+
+</PageTransition>
 
 );
 }
