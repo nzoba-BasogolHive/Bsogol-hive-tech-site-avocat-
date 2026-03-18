@@ -1,76 +1,82 @@
 import Reveal from "./Reveal";
 import image6 from "../assets/image_6.webp";
+import { useEffect, useState } from "react";
 
 export default function Nos_particularites() {
+  const [offsetY, setOffsetY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setOffsetY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
+    <section className="w-full flex justify-center mt-24 px-6">
+      <div className="w-full max-w-7xl">
+        <Reveal>
+          <section className="py-16 md:py-24">
+            <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-16 lg:gap-20">
 
-<section className="w-full flex justify-center mt-16 md:mt-24 px-6">
+              {/* IMAGE PREMIUM PARALLAX */}
+              <div className="relative w-full max-w-[480px] md:max-w-[520px] lg:max-w-[560px] flex justify-center">
+                <div
+                  className="absolute w-full h-full rounded-3xl shadow-2xl overflow-hidden transition-transform duration-700 hover:scale-105 hover:-translate-y-2"
+                  style={{
+                    transform: `translateY(${offsetY * 0.05}px)`,
+                  }}
+                >
+                  <img
+                    src={image6}
+                    alt="illustration"
+                    className="w-full h-full object-cover rounded-3xl shadow-lg"
+                  />
+                </div>
+              </div>
 
-<div className="w-full max-w-7xl">
+              {/* TEXTE PREMIUM */}
+              <div className="text-[#110767] lg:max-w-xl space-y-6">
+                <Reveal>
+                  <h2
+                    className="font-extrabold text-3xl md:text-4xl lg:text-5xl mb-6"
+                    style={{ fontFamily: "Garamond, serif", lineHeight: 1.2 }}
+                  >
+                    NOS PARTICULARITÉS
+                  </h2>
+                </Reveal>
 
-<Reveal>
+                <Reveal>
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                    Nous accompagnons nos clients avec une approche <span className="font-semibold">rigoureuse</span>,
+                    <span className="font-semibold">confidentielle</span> et orientée vers les résultats. Chaque dossier
+                    fait l’objet d’une analyse approfondie afin de construire une stratégie claire et efficace.
+                  </p>
+                </Reveal>
 
-<section className="py-12 md:py-16">
+                <Reveal>
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                    Notre cabinet se distingue par sa capacité à allier <span className="font-semibold">expertise juridique</span>,
+                    précision et organisation moderne.
+                  </p>
+                </Reveal>
 
-<div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-16">
+                <Reveal>
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                    Nous garantissons un suivi structuré, une communication transparente et une disponibilité constante.
+                  </p>
+                </Reveal>
 
-{/* IMAGE */}
+                <Reveal>
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                    Notre engagement est de protéger vos intérêts avec <span className="font-semibold">professionnalisme, intégrité et détermination</span>.
+                  </p>
+                </Reveal>
+              </div>
 
-<img
-src={image6}
-alt="illustration"
-className="w-full max-w-[420px] md:max-w-[480px] h-[300px] md:h-[420px] lg:h-[520px] object-cover rounded-2xl shadow-lg"
-/>
-
-{/* TEXTE */}
-
-<div className="text-[#110767]">
-
-<h2
-className="font-bold leading-tight mb-4 text-2xl md:text-3xl lg:text-4xl"
-style={{ fontFamily: "Garamond, serif" }}
->
-NOTRE PARTICULARITÉS
-</h2>
-
-<p
-className="text-gray-700 leading-relaxed text-sm md:text-base lg:text-lg"
-style={{ fontFamily: "Garamond, serif" }}
->
-
-Nous accompagnons nos clients avec une approche rigoureuse,
-confidentielle et orientée vers les résultats. Chaque dossier
-fait l’objet d’une analyse approfondie afin de construire une
-stratégie juridique claire et efficace.
-
-<br /><br />
-
-Notre cabinet se distingue par sa capacité à allier expertise
-juridique, précision et organisation moderne.
-
-<br /><br />
-
-Nous garantissons un suivi structuré, une communication
-transparente et une disponibilité constante.
-
-<br /><br />
-
-Notre engagement est de protéger vos intérêts avec
-professionnalisme, intégrité et détermination.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-</Reveal>
-
-</div>
-
-</section>
-
-);
+            </div>
+          </section>
+        </Reveal>
+      </div>
+    </section>
+  );
 }
