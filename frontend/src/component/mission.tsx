@@ -1,58 +1,40 @@
+import { motion } from "framer-motion";
 import missionImg from "../assets/image11.webp";
-import Reveal from "./Reveal";
 
 export default function Mission() {
   return (
-    <section className="w-full py-24 bg-[#f6f6f6]">
+    <section className="py-20 md:py-28 bg-white">
 
-      <div className="max-w-[1300px] mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
-        <Reveal>
+        {/* TEXTE */}
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <p className="text-sm tracking-widest text-red-600 mb-3">
+            NOTRE MISSION
+          </p>
 
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Défendre vos droits avec excellence
+          </h2>
 
-            {/* TEXTE GAUCHE */}
-            <div className="flex-1">
+          <p className="text-gray-600 leading-7">
+            Nous offrons une représentation juridique de haut niveau,
+            avec un accompagnement humain et stratégique.
+          </p>
 
-              <h2
-                className="text-4xl mb-4"
-                style={{ fontFamily: "Garamond" }}
-              >
-                NOTRE MISSION
-              </h2>
+        </motion.div>
 
-              <h3
-                className="text-xl font-semibold mb-6"
-                style={{ fontFamily: "Garamond" }}
-              >
-                La mission de justice à tout prix
-              </h3>
-
-              <p
-                className="text-gray-800 leading-relaxed"
-                style={{ fontFamily: "Garamond", fontSize: "19px" }}
-              >
-                Nous offrons à nos clients une représentation juridique de haut niveau
-                afin que chacun se sente soutenu et préparé face au système judiciaire
-                familial. Nous comprenons l'impact des décisions auxquelles ils sont
-                confrontés et nous nous efforçons de les aider à mieux appréhender
-                leur situation en droit familial.
-              </p>
-
-            </div>
-
-            {/* IMAGE DROITE */}
-            <div className="flex-1">
-              <img
-                src={missionImg}
-                alt="Notre mission"
-                className="w-full h-[520px] object-cover rounded-lg shadow-lg"
-              />
-            </div>
-
-          </div>
-
-        </Reveal>
+        {/* IMAGE */}
+        <motion.img
+          src={missionImg}
+          className="w-full h-[400px] md:h-[500px] object-cover rounded-xl shadow-xl"
+          initial={{ opacity: 0, x: 80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+        />
 
       </div>
 

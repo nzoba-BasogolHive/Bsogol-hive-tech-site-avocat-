@@ -1,84 +1,48 @@
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import histoireImage from "../assets/image (13).webp";
 
 export default function Histoire() {
-
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section className="relative py-32 bg-[#f6f6f6] overflow-hidden">
+    <section className="py-20 md:py-28 bg-[#f8f9fc]">
 
-      <div
-        ref={ref}
-        className={`max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center px-8 transition-all duration-1000 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-        }`}
-      >
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
-        {/* TEXTE GAUCHE */}
-        <div>
+        {/* IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="rounded-xl overflow-hidden shadow-xl"
+        >
+          <img src={histoireImage} className="w-full h-[400px] md:h-[500px] object-cover" />
+        </motion.div>
 
-          <h2
-            className="text-4xl font-bold text-black mb-4"
-            style={{ fontFamily: "Garamond" }}
-          >
-            Notre Histoire
+        {/* TEXTE */}
+        <motion.div
+          initial={{ opacity: 0, x: 80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+
+          <p className="text-sm tracking-widest text-[#1b0f6b] mb-3">
+            NOTRE HISTOIRE
+          </p>
+
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Plus de 10 ans d’expertise juridique
           </h2>
 
-          {/* ligne rouge */}
-          <div className="w-24 h-[2px] bg-[#9f1d1d] mb-6"></div>
-
-          <h3
-            className="text-xl font-semibold mb-6"
-            style={{ fontFamily: "Garamond" }}
-          >
-            Plus de 10 Ans d'Excellence Juridique
-          </h3>
-
-          <p className="text-gray-700 leading-8 mb-6">
-            Fondé en 1998 par Maître Jean-Pierre Durand, notre cabinet
-            s'est rapidement imposé comme une référence dans le paysage
-            juridique parisien.
+          <p className="text-gray-600 leading-7 mb-4">
+            Fondé en 1998, notre cabinet s’est imposé comme une référence juridique.
           </p>
 
-          <p className="text-gray-700 leading-8 mb-6">
-            Au fil des années, nous avons constitué une équipe d'avocats
-            passionnés, chacun expert dans son domaine.
+          <p className="text-gray-600 leading-7">
+            Une équipe d’experts dédiée à la défense de vos intérêts.
           </p>
 
-          <p className="text-gray-700 leading-8">
-            Aujourd'hui, notre cabinet compte parmi les plus reconnus
-            de la capitale.
-          </p>
-
-        </div>
-
-        {/* IMAGE DROITE */}
-        <div className="rounded-xl overflow-hidden shadow-xl group">
-
-          <img
-            src={histoireImage}
-            alt="Notre histoire"
-            className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
-          />
-
-        </div>
+        </motion.div>
 
       </div>
 

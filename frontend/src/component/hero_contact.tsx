@@ -15,7 +15,7 @@ className="absolute inset-0 w-full h-full object-cover"
 />
 
 {/* OVERLAY */}
-<div className="absolute inset-0 bg-gradient-to-r from-[#0c0c3c]/80 to-[#0c0c3c]/40"></div>
+<div className="absolute inset-0 bg-gradient-to-r from-[#0c0c3c]/40 to-[#0c0c3c]/40"></div>
 
 
 {/* NAVBAR GLASS */}

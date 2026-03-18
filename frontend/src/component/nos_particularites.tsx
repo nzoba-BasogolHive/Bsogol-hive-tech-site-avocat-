@@ -4,22 +4,22 @@ import image6 from "../assets/image_6.webp";
 export default function Nos_particularites() {
   return (
 
-<section className="w-full flex justify-center mt-52 md:mt-40 px-6">
+<section className="w-full flex justify-center mt-16 md:mt-24 px-6">
 
 <div className="w-full max-w-7xl">
 
 <Reveal>
 
-<section className="py-20 md:py-28">
+<section className="py-12 md:py-16">
 
-<div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+<div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-16">
 
 {/* IMAGE */}
 
 <img
 src={image6}
 alt="illustration"
-className="w-full max-w-[500px] h-[420px] md:h-[520px] lg:h-[640px] object-cover rounded-2xl shadow-xl"
+className="w-full max-w-[420px] md:max-w-[480px] h-[300px] md:h-[420px] lg:h-[520px] object-cover rounded-2xl shadow-lg"
 />
 
 {/* TEXTE */}
@@ -27,14 +27,14 @@ className="w-full max-w-[500px] h-[420px] md:h-[520px] lg:h-[640px] object-cover
 <div className="text-[#110767]">
 
 <h2
-className="font-bold leading-tight mb-6 text-3xl md:text-4xl lg:text-5xl"
+className="font-bold leading-tight mb-4 text-2xl md:text-3xl lg:text-4xl"
 style={{ fontFamily: "Garamond, serif" }}
 >
 NOTRE PARTICULARITÉS
 </h2>
 
 <p
-className="text-gray-700 leading-relaxed space-y-4 text-base md:text-lg lg:text-xl"
+className="text-gray-700 leading-relaxed text-sm md:text-base lg:text-lg"
 style={{ fontFamily: "Garamond, serif" }}
 >
 

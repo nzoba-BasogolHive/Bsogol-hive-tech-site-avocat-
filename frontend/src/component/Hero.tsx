@@ -19,7 +19,7 @@ export default function Hero() {
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-[#110767]/75"></div>
+        <div className="absolute inset-0 bg-[#110767]/45"></div>
 
         {/* NAVBAR */}
         <div className="absolute top-0 left-0 w-full z-20">

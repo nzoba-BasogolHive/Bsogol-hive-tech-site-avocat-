@@ -30,7 +30,7 @@ import Login from "./Dashboard/Login";
 import Sidebar from "./Dashboard/Sidebar";
 import Dossiers from "./Dashboard/dossier";
 import RendezVous from "./Dashboard/RendezVous";
-import Utilisateurs from "./Dashboard/Utilisateurs";
+import PrivateRoute from "./Dashboard/route";
 import Agenda from "./Dashboard/Agenda";
 
 function App() {
@@ -74,9 +74,9 @@ function App() {
            <Route path="/Sidebar" element={<Sidebar />} />
 
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/dossiers" element={<Dossiers />} />
-          <Route path="/dashboard/rendezvous" element={<RendezVous />} />
-          <Route path="/dashboard/utilisateurs" element={<Utilisateurs />} />
+          <Route path="/Dashboard/dossiers" element={<Dossiers />} />
+          <Route path="/Dashboard/rendezvous" element={<RendezVous />} />
+         
           <Route path="/dashboard/agenda" element={<Agenda />} />
 
         </Routes>

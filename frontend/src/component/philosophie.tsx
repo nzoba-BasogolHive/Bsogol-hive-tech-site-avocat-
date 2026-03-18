@@ -1,52 +1,38 @@
+import { motion } from "framer-motion";
 import missionImg from "../assets/image (15).webp";
-import Reveal from "./Reveal";
 
-export default function PHILOSOPHIE() {
+export default function Philosophie() {
   return (
-    <section className="w-full py-28 bg-white">
-      <div className="max-w-[1300px] mx-auto px-6">
+    <section className="py-24 bg-[#0f172a] text-white">
 
-        <Reveal>
+      <div className="max-w-6xl mx-auto text-center px-6">
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-3xl md:text-4xl font-bold mb-6"
+        >
+          Notre Philosophie
+        </motion.h2>
 
-            {/* IMAGE GAUCHE */}
-            <div>
-              <img
-                src={missionImg}
-                alt="Notre philosophie"
-                className="w-full h-[500px] object-cover rounded-lg shadow-xl"
-              />
-            </div>
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-gray-300 max-w-3xl mx-auto leading-7"
+        >
+          Une approche humaine, stratégique et rigoureuse du droit.
+          Chaque client est unique et mérite une attention personnalisée.
+        </motion.p>
 
-            {/* TEXTE DROITE */}
-            <div>
-
-              <h2
-                className="text-4xl mb-6 text-[#110767]"
-                style={{ fontFamily: "Garamond" }}
-              >
-                NOTRE PHILOSOPHIE
-              </h2>
-
-              <p
-                className="text-gray-800 leading-relaxed mb-6"
-                style={{ fontFamily: "Garamond", fontSize: "20px" }}
-              >
-                Nous offrons à nos clients une représentation juridique
-                de haut niveau afin que chacun se sente soutenu et préparé
-                face au système judiciaire familial. Nous comprenons l'impact
-                des décisions auxquelles ils sont confrontés et nous nous efforçons
-                de les aider à mieux appréhender leur situation.
-              </p>
-
-            </div>
-
-          </div>
-
-        </Reveal>
+        <motion.img
+          src={missionImg}
+          className="mt-10 mx-auto rounded-xl shadow-2xl w-full max-w-4xl h-[300px] md:h-[400px] object-cover"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+        />
 
       </div>
+
     </section>
   );
 }

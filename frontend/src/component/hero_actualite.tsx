@@ -1,6 +1,6 @@
 import image10 from "../assets/image (23).webp";
 import NavbarComponent from "./Navbar";
-
+import { Link } from "react-router-dom";
 export default function Hero() {
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
@@ -13,7 +13,7 @@ export default function Hero() {
       />
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#110767]/90 via-[#110767]/70 to-[#110767]/40"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#110767]/40 via-[#110767]/40 to-[#110767]/40"></div>
 
       {/* NAVBAR */}
       <div className="absolute top-0 left-0 w-full z-20">
@@ -46,13 +46,16 @@ export default function Hero() {
           {/* BOUTONS */}
           <div className="flex flex-col sm:flex-row gap-4">
 
-            <button className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-medium transition">
+              <Link
+              to="/Actualites" className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-medium transition">
               Lire les articles
-            </button>
+            </Link>
 
-            <button className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition">
+            <Link
+              to="/contact"
+              className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition">
               Contacter un avocat
-            </button>
+            </Link>
 
           </div>
 

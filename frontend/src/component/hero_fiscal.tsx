@@ -18,7 +18,7 @@ export default function DroitFiscalSection() {
         />
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-[#110767]/60"></div>
+        <div className="absolute inset-0 bg-[#110767]/40"></div>
 
         {/* TEXTE */}
         <div className="relative z-10 max-w-6xl mx-auto h-full flex items-center px-6 text-white">
