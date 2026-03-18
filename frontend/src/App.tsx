@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+
 import ScrollToTop from "./component/ScrollToTop";
 import NavbarComponent from "./component/Navbar";
 
@@ -23,51 +24,65 @@ import BlogCivil from "./component/blog_civil";
 import Contact from "./pages/contact";
 import Formulaires from "./pages/formulaires";
 
+/* DASHBOARD */
+import Dashboard from "./Dashboard/dashboard";
+import Login from "./Dashboard/Login";
+import Sidebar from "./Dashboard/Sidebar";
+import Dossiers from "./Dashboard/dossier";
+import RendezVous from "./Dashboard/RendezVous";
+import Utilisateurs from "./Dashboard/Utilisateurs";
+import Agenda from "./Dashboard/Agenda";
+
 function App() {
 
   const location = useLocation();
 
   return (
-
     <div className="container-main">
 
-      {/* NAVBAR FIXE */}
+      {/* Navbar */}
       <NavbarComponent />
 
-         <ScrollToTop />
+      <ScrollToTop />
 
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
 
-          <Routes location={location} key={location.pathname}>
+          {/* SITE PUBLIC */}
+          <Route path="/" element={<Accueil />} />
+          <Route path="/apropos" element={<Apropos />} />
+          <Route path="/actualites" element={<Actualites />} />
+          <Route path="/equipe" element={<Equipe />} />
 
-            <Route path="/" element={<Accueil />} />
-            <Route path="/apropos" element={<Apropos />} />
-            <Route path="/actualites" element={<Actualites />} />
-            <Route path="/equipe" element={<Equipe />} />
+          <Route path="/droit-penal" element={<DroitPenal />} />
+          <Route path="/droit-civil" element={<DroitCivil />} />
+          <Route path="/droit-affaires" element={<DroitAffaires />} />
+          <Route path="/droit-travail" element={<DroitTravail />} />
+          <Route path="/droit-fiscal" element={<DroitFiscal />} />
 
-            <Route path="/droit-penal" element={<DroitPenal />} />
-            <Route path="/droit-civil" element={<DroitCivil />} />
-            <Route path="/droit-affaires" element={<DroitAffaires />} />
-            <Route path="/droit-travail" element={<DroitTravail />} />
-            <Route path="/droit-fiscal" element={<DroitFiscal />} />
+          <Route path="/blog_affaire" element={<Blog_affaire />} />
+          <Route path="/blog_penal" element={<Blog_penal />} />
+          <Route path="/blog_immobilier" element={<Blog_immobilier />} />
+          <Route path="/blog_fiscal" element={<Blog_fiscal />} />
+          <Route path="/blog_civil" element={<BlogCivil />} />
 
-            <Route path="/blog_affaire" element={<Blog_affaire />} />
-            <Route path="/blog_penal" element={<Blog_penal />} />
-            <Route path="/blog_immobilier" element={<Blog_immobilier />} />
-            <Route path="/blog_fiscal" element={<Blog_fiscal />} />
-            <Route path="/blog_civil" element={<BlogCivil />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/formulaires" element={<Formulaires />} />
 
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/formulaires" element={<Formulaires />} />
+          {/* DASHBOARD */}
+          <Route path="/login" element={<Login />} />
+           <Route path="/Sidebar" element={<Sidebar />} />
 
-          </Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/dossiers" element={<Dossiers />} />
+          <Route path="/dashboard/rendezvous" element={<RendezVous />} />
+          <Route path="/dashboard/utilisateurs" element={<Utilisateurs />} />
+          <Route path="/dashboard/agenda" element={<Agenda />} />
 
-        </AnimatePresence>
+        </Routes>
+      </AnimatePresence>
 
-      </div>
-
-   
-
+    </div>
   );
 }
 

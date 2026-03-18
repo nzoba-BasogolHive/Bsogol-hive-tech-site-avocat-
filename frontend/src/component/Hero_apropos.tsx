@@ -15,7 +15,7 @@ export default function Hero() {
 
       {/* Overlay */}
 
-      <div className="absolute inset-0 bg-[#110767]/75"></div>
+      <div className="absolute inset-0 bg-[#110767]/20"></div>
 
 
       {/* Navbar */}
