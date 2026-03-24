@@ -6,7 +6,7 @@ export default function CivilPractice() {
   return (
     <section className="py-24 bg-gray-50">
 
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 px-8">
+      <div className="section-container mx-auto grid md:grid-cols-2 gap-16 px-8">
 
         {/* TEXTE GAUCHE */}
         <Reveal>

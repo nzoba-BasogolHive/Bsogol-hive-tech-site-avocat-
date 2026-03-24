@@ -71,7 +71,7 @@ return (
 
 <section className="py-16 md:py-24 bg-gray-50">
 
-<div className="max-w-7xl mx-auto px-6">
+<div className="section-container mx-auto px-6">
 
 {/* TITRE */}
 

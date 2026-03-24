@@ -71,12 +71,12 @@ export default function ServicesOverlay({ open, setOpen }: Props) {
           animate={{ y: 0 }}
           exit={{ y: "-100%" }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-50 bg-white min-h-screen flex flex-col"
+          className="rounded-xl fixed inset-0 z-50 bg-white min-h-screen flex flex-col"
         >
 
           {/* HEADER */}
 
-          <div className="bg-[#2E247E] text-white px-10 py-10 flex justify-between items-center">
+          <div className="bg-[#1C1F33] text-white px-4 py-10 flex justify-between items-center">
 
             <h2 className="text-3xl md:text-4xl font-bold">
               Nos Domaines d'Expertise
@@ -95,7 +95,7 @@ export default function ServicesOverlay({ open, setOpen }: Props) {
 
           <div className="flex-1 flex items-center">
 
-            <div className="max-w-7xl mx-auto w-full px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="  max-w-7xl mx-auto w-full px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
 
               {services.map((service, index) => (
 
@@ -108,7 +108,7 @@ export default function ServicesOverlay({ open, setOpen }: Props) {
                     navigate(service.link);
                     setOpen(false);
                   }}
-                  className="group border p-8 rounded-xl cursor-pointer hover:shadow-2xl transition"
+                  className="group border p-6 rounded-xl cursor-pointer hover:shadow-2xl transition"
                 >
 
                   {/* ICON */}
@@ -156,4 +156,4 @@ export default function ServicesOverlay({ open, setOpen }: Props) {
     </AnimatePresence>
 
   );
-}
+}  

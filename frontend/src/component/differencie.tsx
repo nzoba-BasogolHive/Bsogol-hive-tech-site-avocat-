@@ -12,7 +12,7 @@ export default function Difference() {
   return (
     <section className="relative py-24 md:py-32 bg-gradient-to-b from-white to-[#f3f6ff] overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <div className="section-container mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
 
         {/* TEXTE */}
         <div className="space-y-6">

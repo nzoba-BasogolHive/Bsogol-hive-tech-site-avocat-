@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.section-container {
+  width: 100%;
+  max-width: 1500px; /* plus large que navbar */
+  margin: 0 auto;
+  padding: 0 20px;
+}

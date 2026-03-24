@@ -9,7 +9,7 @@ return (
 
 <section className="bg-gray-100 py-10 md:py-16">
 
-<div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+<div className=" section-container  bg-white rounded-xl shadow-md overflow-hidden">
 
 {/* IMAGE */}
 

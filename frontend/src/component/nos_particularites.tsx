@@ -1,5 +1,4 @@
 import Reveal from "./Reveal";
-import image6 from "../assets/image_6.webp";
 import { useEffect, useState } from "react";
 
 export default function Nos_particularites() {
@@ -12,35 +11,32 @@ export default function Nos_particularites() {
   }, []);
 
   return (
-    <section className="w-full flex justify-center mt-24 px-6">
-      <div className="w-full max-w-7xl">
+    <section className="  w-full flex justify-center mt-24 px-6">
+      <div className="section-container w-full max-w-7xl">
         <Reveal>
           <section className="py-16 md:py-24">
             <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-16 lg:gap-20">
 
               {/* IMAGE PREMIUM PARALLAX */}
-              <div className="relative w-full max-w-[480px] md:max-w-[520px] lg:max-w-[560px] flex justify-center">
+              <div className="relative w-full max-w-[560px] flex justify-center h-[400px] md:h-[500px] lg:h-[560px]">
                 <div
                   className="absolute w-full h-full rounded-3xl shadow-2xl overflow-hidden transition-transform duration-700 hover:scale-105 hover:-translate-y-2"
-                  style={{
-                    transform: `translateY(${offsetY * 0.05}px)`,
-                  }}
+                  style={{ transform: `translateY(${offsetY * 0.05}px)` }}
                 >
                   <img
-                    src={image6}
-                    alt="illustration"
-                    className="w-full h-full object-cover rounded-3xl shadow-lg"
-                  />
+  src="/images/image_6.webp"
+  alt="hero premium"
+  className="w-full h-full object-cover rounded-3xl shadow-lg"
+/>
+           
                 </div>
               </div>
 
               {/* TEXTE PREMIUM */}
               <div className="text-[#110767] lg:max-w-xl space-y-6">
                 <Reveal>
-                  <h2
-                    className="font-extrabold text-3xl md:text-4xl lg:text-5xl mb-6"
-                    style={{ fontFamily: "Garamond, serif", lineHeight: 1.2 }}
-                  >
+                  <h2 className="font-extrabold text-3xl md:text-4xl lg:text-5xl mb-6"
+                      style={{ fontFamily: "Garamond, serif", lineHeight: 1.2 }}>
                     NOS PARTICULARITÉS
                   </h2>
                 </Reveal>
@@ -48,8 +44,7 @@ export default function Nos_particularites() {
                 <Reveal>
                   <p className="text-gray-600 text-base md:text-lg leading-relaxed">
                     Nous accompagnons nos clients avec une approche <span className="font-semibold">rigoureuse</span>,
-                    <span className="font-semibold">confidentielle</span> et orientée vers les résultats. Chaque dossier
-                    fait l’objet d’une analyse approfondie afin de construire une stratégie claire et efficace.
+                    <span className="font-semibold">confidentielle</span> et orientée vers les résultats.
                   </p>
                 </Reveal>
 

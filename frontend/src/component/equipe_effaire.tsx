@@ -31,7 +31,7 @@ return (
 
 <section className="py-16 md:py-24 lg:py-28 bg-white">
 
-<div className="max-w-7xl mx-auto px-6 md:px-8 text-center">
+<div className="section-container mx-auto px-6 md:px-8 text-center">
 
 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
 Découvrez Notre Équipe

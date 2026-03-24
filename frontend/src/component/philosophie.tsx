@@ -5,7 +5,7 @@ export default function Philosophie() {
   return (
     <section className="py-24 bg-[#0f172a] text-white">
 
-      <div className="max-w-6xl mx-auto text-center px-6">
+      <div className="section-container mx-auto text-center px-6">
 
         <motion.h2
           initial={{ opacity: 0, y: 40 }}

@@ -24,30 +24,16 @@ import BlogCivil from "./component/blog_civil";
 import Contact from "./pages/contact";
 import Formulaires from "./pages/formulaires";
 
-/* DASHBOARD */
-import Dashboard from "./Dashboard/dashboard";
-import Login from "./Dashboard/Login";
-import Sidebar from "./Dashboard/Sidebar";
-import Dossiers from "./Dashboard/dossier";
-import RendezVous from "./Dashboard/RendezVous";
-import PrivateRoute from "./Dashboard/route";
-import Agenda from "./Dashboard/Agenda";
-
 function App() {
-
   const location = useLocation();
 
   return (
-    <div className="container-main">
-
-      {/* Navbar */}
+    <div className="w-full min-h-screen bg-white">
       <NavbarComponent />
-
       <ScrollToTop />
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-
           {/* SITE PUBLIC */}
           <Route path="/" element={<Accueil />} />
           <Route path="/apropos" element={<Apropos />} />
@@ -69,21 +55,12 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/formulaires" element={<Formulaires />} />
 
-          {/* DASHBOARD */}
-          <Route path="/login" element={<Login />} />
-           <Route path="/Sidebar" element={<Sidebar />} />
-
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/Dashboard/dossiers" element={<Dossiers />} />
-          <Route path="/Dashboard/rendezvous" element={<RendezVous />} />
-         
-          <Route path="/dashboard/agenda" element={<Agenda />} />
-
+          {/* Route fallback */}
+          <Route path="*" element={<h1>Page non trouvée</h1>} />
         </Routes>
       </AnimatePresence>
-
     </div>
   );
 }
 
-export default App; 
+export default App;

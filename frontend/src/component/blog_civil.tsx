@@ -1,128 +1,120 @@
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
 import PageTransition from "../component/PageTransition";
+import img2 from "/src/assets/image (25).webp";
 
 export default function ArticlePage() {
 
-return (
+  return (
+    <PageTransition>
+      <section className="bg-gray-100 py-10 md:py-20">
+        <div className="max-w-screen-xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
 
-<PageTransition>
+          {/* IMAGE */}
+          <div className="relative">
+            <img
+              src={img2}
+              alt="MTN Cameroon"
+              className="w-full h-[220px] md:h-[320px] object-cover"
+            />
+            <span className="absolute bottom-4 left-4 bg-red-700 text-white px-4 py-1 rounded-full text-xs md:text-sm">
+              Droit Civil
+            </span>
+          </div>
 
-<section className="bg-gray-100 py-10 md:py-16">
+          {/* CONTENU */}
+          <div className="p-6 md:p-10">
 
-<div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            {/* META */}
+            <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-500 text-xs md:text-sm mb-6">
+              <div className="flex items-center gap-2">
+                <FaCalendarAlt />
+                <span>02 févr. 2026</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaUser />
+                <span>Rédaction juridique</span>
+              </div>
+            </div>
 
-{/* IMAGE */}
+            {/* TITRE */}
+            <h1 className="text-2xl md:text-3xl font-semibold mb-6">
+              MTN Cameroon gagne en appel contre la saisie d’actifs
+            </h1>
 
-<div className="relative">
+            {/* CITATION */}
+            <div className="border-l-4 border-yellow-500 pl-4 italic text-gray-600 mb-8 text-sm md:text-base">
+              Une décision judiciaire majeure qui clarifie les règles entourant les saisies bancaires au Cameroun et renforce la protection des entreprises.
+            </div>
 
-<img
-src="/src/assets/image (29).webp"
-alt="article droit civil"
-className="w-full h-[220px] md:h-[320px] object-cover"
-/>
+            {/* TEXTE AVEC SOUS-TITRES */}
 
-<span className="absolute bottom-4 left-4 bg-red-700 text-white px-4 py-1 rounded-full text-xs md:text-sm">
-Droit Civil
-</span>
+            <div className="space-y-8 text-gray-700 leading-relaxed text-sm md:text-base">
 
-</div>
+              {/* Contexte */}
+              <section>
+                <h2 className="text-xl md:text-2xl font-semibold mb-4">Contexte de l’affaire</h2>
+                <p>
+                  MTN Cameroon avait fait l’objet d’une saisie de certains de ses comptes bancaires dans le cadre d’un litige lié à un prêt contracté par l’entreprise. Les saisies ont été effectuées rapidement et sans que toutes les garanties procédurales soient respectées. L’entreprise a alors contesté ces mesures, estimant qu’elles étaient illégales et préjudiciables à son fonctionnement.
+                </p>
+                <p>
+                  Cette situation a mis en lumière un problème récurrent : la nécessité pour les créanciers et les autorités judiciaires de respecter scrupuleusement les procédures légales lors de saisies d’actifs d’entreprises afin de protéger l’équilibre économique et la légitimité des mesures coercitives.
+                </p>
+              </section>
 
+              {/* Décision de la Cour */}
+              <section>
+                <h2 className="text-xl md:text-2xl font-semibold mb-4">Décision de la cour d’appel</h2>
+                <p>
+                  Après examen du dossier, la cour d’appel camerounaise a constaté que la procédure initiale comportait des manquements importants. Certaines étapes obligatoires n’avaient pas été respectées, ce qui rendait la saisie juridiquement contestable.
+                </p>
+                <p>
+                  La cour a donc ordonné la libération immédiate des fonds saisis, réaffirmant le droit des entreprises à bénéficier d’un traitement légal et équitable. Cette décision constitue un rappel crucial que les saisies bancaires doivent être strictement encadrées par la loi pour éviter des abus ou des préjudices injustifiés.
+                </p>
+              </section>
 
-{/* CONTENU */}
+              {/* Implications juridiques */}
+              <section>
+                <h2 className="text-xl md:text-2xl font-semibold mb-4">Implications pour les entreprises</h2>
+                <p>
+                  Cette décision a des conséquences importantes pour les entreprises et les créanciers. Elle clarifie que les mesures coercitives, comme la saisie de comptes bancaires, ne peuvent être mises en œuvre qu’en respectant toutes les étapes légales. Les entreprises peuvent désormais invoquer cette jurisprudence pour contester toute saisie similaire non conforme.
+                </p>
+                <p>
+                  Les implications vont au-delà de MTN Cameroon : la jurisprudence renforce la sécurité juridique pour toutes les entreprises opérant au Cameroun, en soulignant l’importance d’un cadre procédural clair et équitable.
+                </p>
+              </section>
 
-<div className="p-6 md:p-10">
+              {/* Conseils pratiques */}
+              <section>
+                <h2 className="text-xl md:text-2xl font-semibold mb-4">Conseils pratiques</h2>
+                <p>
+                  Pour les entreprises et leurs conseils juridiques, il est essentiel de : 
+                </p>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>Analyser systématiquement la légalité des saisies et autres mesures coercitives.</li>
+                  <li>Assurer la conformité des procédures pour éviter toute contestation judiciaire.</li>
+                  <li>Anticiper les risques financiers et prévoir des stratégies de protection de trésorerie.</li>
+                  <li>Consulter des avocats spécialisés en droit civil et en droit des affaires pour des conseils adaptés à chaque situation.</li>
+                </ul>
+                <p>
+                  Cette approche proactive permet aux entreprises de sécuriser leurs activités et de réagir efficacement face à des litiges financiers.
+                </p>
+              </section>
 
-{/* META */}
+            </div>
 
-<div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-500 text-xs md:text-sm mb-6">
+            {/* CTA */}
+            <div className="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <p className="text-gray-600 text-sm md:text-base">
+                Vous avez une question sur ce sujet ?
+              </p>
+              <button className="bg-[#1E1671] text-white px-6 py-3 rounded-md hover:bg-[#151057] transition w-full md:w-auto">
+                Consulter un avocat →
+              </button>
+            </div>
 
-<div className="flex items-center gap-2">
-<FaCalendarAlt />
-<span>20 février 2025</span>
-</div>
-
-<div className="flex items-center gap-2">
-<FaUser />
-<span>Maître Alexandre Petit</span>
-</div>
-
-</div>
-
-
-{/* TITRE */}
-
-<h1 className="text-2xl md:text-3xl font-semibold mb-6">
-Les nouvelles règles du divorce par consentement mutuel
-</h1>
-
-
-{/* CITATION */}
-
-<div className="border-l-4 border-yellow-500 pl-4 italic text-gray-600 mb-8 text-sm md:text-base">
-Depuis plusieurs années, la procédure de divorce par consentement mutuel
-a évolué afin de simplifier et d’accélérer la séparation des époux tout
-en garantissant la protection des intérêts de chacun.
-</div>
-
-
-{/* TEXTE */}
-
-<div className="space-y-6 text-gray-700 leading-relaxed text-sm md:text-base">
-
-<p>
-Le divorce par consentement mutuel permet aux époux de se séparer
-à l’amiable lorsqu’ils sont d’accord sur les conséquences du divorce :
-partage des biens, garde des enfants, pension alimentaire ou encore
-résidence familiale. Cette procédure est aujourd’hui largement
-privilégiée car elle est plus rapide et moins conflictuelle qu’un
-divorce judiciaire classique.
-</p>
-
-<p>
-Depuis la réforme récente, ce type de divorce peut être réalisé
-sans passer devant un juge, sauf dans certains cas particuliers.
-Les époux doivent chacun être assistés par leur propre avocat,
-et une convention de divorce est ensuite rédigée afin de fixer
-l’ensemble des modalités de la séparation.
-</p>
-
-<p>
-Une fois la convention signée par les deux parties et leurs avocats,
-elle est déposée chez un notaire qui lui donne force exécutoire.
-Cette procédure permet de réduire les délais et d’éviter une
-procédure judiciaire longue et coûteuse.
-</p>
-
-<p>
-Toutefois, il reste essentiel d’être accompagné par un professionnel
-du droit afin de garantir que la convention protège correctement
-vos droits et ceux de votre famille.
-</p>
-
-</div>
-
-
-{/* CTA */}
-
-<div className="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-
-<p className="text-gray-600 text-sm md:text-base">
-Vous souhaitez être accompagné dans une procédure de divorce ?
-</p>
-
-<button className="bg-[#1E1671] text-white px-6 py-3 rounded-md hover:bg-[#151057] transition w-full md:w-auto">
-Consulter un avocat →
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</PageTransition>
-
-);
+          </div>
+        </div>
+      </section>
+    </PageTransition>
+  );
 }

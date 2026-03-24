@@ -1,97 +1,70 @@
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
 import PageTransition from "../component/PageTransition";
+import img5 from "../assets/image3.webp"; // Assure-toi que l'image est bien dans src/assets
+import { Link } from "react-router-dom";
+export default function ActualitePage() {
+  return (
+    <PageTransition>
+      <section className="bg-gray-100 py-16 md:py-24">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-10">
+             <h2
+className="mb-12 md:mb-16 font-bold text-[#0f1545]"
+style={{
+fontFamily:"Garamond, serif",
+fontSize:"clamp(32px,5vw,64px)",
+letterSpacing:"3px"
+}}
+>
+NOS ACTUALITES RECENTS
+</h2>
+          <div className="flex flex-col md:flex-row bg-white shadow-md rounded-xl overflow-hidden">
+           
+            {/* IMAGE À GAUCHE */}
+            <div className="md:w-1/2 h-[200px] md:h-auto relative">
+              <img
+                src={img5}
+                alt="Actualité Droit Civil"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-export default function ArticlePage() {
+            {/* TRAIT VERTICAL */}
+            <div className="hidden md:block w-px bg-gray-300"></div>
 
-return (
+            {/* DESCRIPTION À DROITE */}
+            <div className="md:w-1/2 p-6 md:p-10 flex flex-col justify-between">
+              
+              {/* Catégorie et date */}
+              <div className="flex flex-wrap items-center gap-6 text-gray-500 text-sm mb-6">
+                <div className="flex items-center gap-2">
+                  <FaCalendarAlt /> <span>25 février 2026</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaUser /> <span>Maître Alexandre Petit</span>
+                </div>
+              </div>
 
-<PageTransition>
+              {/* Titre */}
+              <h1 className="text-2xl md:text-3xl font-semibold mb-6">
+                Les nouvelles règles du divorce par consentement mutuel
+              </h1>
 
-<section className="bg-gray-100 py-12 md:py-16">
+              {/* Description */}
+              <div className="border-l-4 border-yellow-500 pl-4 italic text-gray-600 mb-8">
+                Depuis la réforme de 2017, le divorce par consentement mutuel peut se faire sans passage devant le juge. Quelles sont les implications pratiques ?
+              </div>
 
-<div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-
-
-<div className="relative">
-
-<img
-src="/src/assets/image (24).webp"
-className="w-full h-[220px] md:h-[320px] object-cover"
-/>
-
-<span className="absolute bottom-4 left-4 bg-red-700 text-white px-4 py-1 rounded-full text-sm">
-Droit Des Affaires
-</span>
-
-</div>
-
-
-<div className="p-6 md:p-10">
-
-<div className="flex flex-wrap items-center gap-6 text-gray-500 text-sm mb-6">
-
-<div className="flex items-center gap-2">
-<FaCalendarAlt/>
-<span>15 février 2025</span>
-</div>
-
-<div className="flex items-center gap-2">
-<FaUser/>
-<span>Maître Alexandre Petit</span>
-</div>
-
-</div>
-
-
-<h1 className="text-2xl md:text-3xl font-semibold mb-6">
-Protection des données personnelles : les obligations des entreprises
-</h1>
-
-
-<div className="border-l-4 border-yellow-500 pl-4 italic text-gray-600 mb-8">
-Le RGPD impose des obligations strictes aux entreprises.
-Tour d'horizon des principales mesures à mettre en place.
-</div>
-
-
-<div className="space-y-6 text-gray-700 leading-relaxed">
-
-<p>
-Notre cabinet d'avocats suit de près les évolutions législatives et
-jurisprudentielles dans ce domaine.
-</p>
-
-<p>
-Les professionnels du droit doivent adapter leurs pratiques aux
-nouvelles règles en vigueur.
-</p>
-
-<p>
-Nos avocats spécialisés sont à votre disposition pour vous accompagner.
-</p>
-
-</div>
-
-
-<div className="mt-10 flex flex-col md:flex-row gap-4 md:justify-between md:items-center">
-
-<p className="text-gray-600">
-Vous avez une question sur ce sujet ?
-</p>
-
-<button className="bg-[#1E1671] text-white px-6 py-3 rounded-md hover:bg-[#151057] transition">
-Consulter un avocat →
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</PageTransition>
-
-);
+               {/* CTA */}
+                <Link
+              to="/blog_civil"
+                  className="text-red-600 font-medium hover:underline"
+                >
+                  Lire l'article →
+                </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </PageTransition>
+  );
 }

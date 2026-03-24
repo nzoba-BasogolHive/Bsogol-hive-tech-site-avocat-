@@ -33,7 +33,7 @@ return (
 
 <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
 
-<div className="relative max-w-7xl mx-auto px-6">
+<div className="relative section-container mx-auto px-6">
 
 {/* TITRE */}
 

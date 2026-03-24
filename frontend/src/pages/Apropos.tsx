@@ -6,6 +6,7 @@ import PHILOSOPHIE from "../component/philosophie";
 import Temoignages from "../component/temoignage";
 import Engagement from "../component/engagement";
 import FlooterSection  from "../component/FooterSection";
+import Footer from "../component/footer";
 export default function Apropos () {
   return (
   <div>
@@ -17,6 +18,7 @@ export default function Apropos () {
     <Temoignages/>
     <Engagement/>
     <FlooterSection/>
+    <Footer/>
   </div>
   );
 }

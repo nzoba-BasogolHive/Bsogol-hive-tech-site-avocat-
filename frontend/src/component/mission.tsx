@@ -5,7 +5,7 @@ export default function Mission() {
   return (
     <section className="py-20 md:py-28 bg-white">
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="section-container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
         {/* TEXTE */}
         <motion.div

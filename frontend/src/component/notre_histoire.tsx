@@ -3,7 +3,7 @@ import histoireImage from "../assets/image (13).webp";
 
 export default function Histoire() {
   return (
-    <section className="relative py-24 md:py-32 bg-gradient-to-b from-white to-[#f0f4ff] overflow-hidden">
+    <section className=" section-container relative py-24 md:py-32 bg-gradient-to-b from-white to-[#f0f4ff] overflow-hidden">
       
       {/* Décor subtil derrière l'image */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-100/20 rounded-full blur-3xl -z-10" />

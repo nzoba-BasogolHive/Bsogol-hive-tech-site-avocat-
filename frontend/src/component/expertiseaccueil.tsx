@@ -52,7 +52,7 @@ export default function Expertiseaccueil() {
 
       <Reveal>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="section-container mx-auto px-6 md:px-8">
 
           {/* TITRE */}
 
