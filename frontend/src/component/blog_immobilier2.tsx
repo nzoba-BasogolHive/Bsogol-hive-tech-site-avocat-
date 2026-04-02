@@ -1,11 +1,11 @@
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
-import PageTransition from "../component/PageTransition";
+
 import img4 from "/src/assets/image (26).webp";
 
 export default function ArticlePage() {
 
   return (
-    <PageTransition>
+   
       <section className="bg-gray-100 py-10 md:py-20">
         <div className="max-w-screen-xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
 
@@ -117,6 +117,6 @@ export default function ArticlePage() {
           </div>
         </div>
       </section>
-    </PageTransition>
+   
   );
 }

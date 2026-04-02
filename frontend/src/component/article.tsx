@@ -1,6 +1,6 @@
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
 import PageTransition from "../component/PageTransition";
-import img5 from "../assets/image3.webp"; // Assure-toi que l'image est bien dans src/assets
+import img5 from "../assets/image3.webp"; 
 import { Link } from "react-router-dom";
 export default function ActualitePage() {
   return (

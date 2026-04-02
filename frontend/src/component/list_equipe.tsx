@@ -7,6 +7,7 @@ import img4 from "../assets/image (19).webp";
 import img5 from "../assets/image (18).webp";
 import img6 from "../assets/image_6.webp";
 
+
 type TeamMember = {
   name: string;
   role: string;

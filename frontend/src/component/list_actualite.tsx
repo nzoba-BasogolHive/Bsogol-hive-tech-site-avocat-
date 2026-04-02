@@ -28,7 +28,7 @@ export default function Actualites() {
     "Droit pénal",
     "Droit des affaires",
     "Droit fiscal",
-    "Droit international",
+    
     "Droit du travail",
   ];
 
@@ -120,7 +120,7 @@ export default function Actualites() {
       title: "Fiscalité locale et développement économique",
       text: "Analyse de la nouvelle loi sur la fiscalité locale et ses effets sur les collectivités. :contentReference[oaicite:13]{index=13}",
       auteur: "Analyste fiscal",
-      link: "/blog_fiscal",
+      link: "/blog_fiscal2",
     },
     {
       categorie: "Droit fiscal",
@@ -170,7 +170,7 @@ export default function Actualites() {
 
   return (
     <section className="py-16 md:py-24 bg-gray-100 -mx-10 md:-mx-20">
-      <div className="mx-auto max-w-[2200px] px-6 md:px-16">
+      <div className="max-w-7xl mx-auto  px-6 md:px-16">
         {/* TITRE */}
         <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#0f1545]">
           Actualités juridiques

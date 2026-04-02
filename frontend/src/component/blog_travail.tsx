@@ -1,11 +1,11 @@
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
-import PageTransition from "../component/PageTransition";
+
 
 export default function ArticlePage() {
 
 return (
 
-<PageTransition>
+
 
 <section className="bg-gray-100 py-10 md:py-16">
 
@@ -114,7 +114,7 @@ Consulter un avocat →
 
 </section>
 
-</PageTransition>
+
 
 );
 }

@@ -1,10 +1,12 @@
+/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Styles personnalisés */
 .section-container {
   width: 100%;
-  max-width: 1500px; /* plus large que navbar */
+  max-width: 1500px; /* plus large que la navbar */
   margin: 0 auto;
   padding: 0 20px;
 }
