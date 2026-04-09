@@ -1,19 +1,46 @@
+// src/Layout.tsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { Role } from "./types";
-import DashboardContent from "./pages/dashboard";
+import DashboardWithCalendar from "./pages/DashboardWithCalendar"; 
 import Dossiers from "./pages/Dossiers";
 import RendezVous from "./pages/RendezVous";
 import Utilisateurs from "./pages/Utilisateurs";
+import type { DossierClient, Role } from "./types"; // type-only import
 
 interface LayoutProps {
   role: Role;
   onLogout: () => void; // pour bouton déconnexion
 }
 
+// Si tu n'as pas initialDossiers, tu peux définir un initial directement ici :
+const initialDossiers: DossierClient[] = [
+  {
+    nomClient: "Jean Dupont",
+    telephone: "0654321098",
+    dateEnregistrement: "2026-03-01",
+    titreDossier: "Vol",
+    branche: "Pénal",
+    status: "En cours",
+    description: "Dossier vol avec témoin",
+    avocatAssigné: "Me Martin",
+  },
+  {
+    nomClient: "Marie Curie",
+    telephone: "0678912345",
+    dateEnregistrement: "2026-02-20",
+    titreDossier: "Divorce",
+    branche: "Civil",
+    status: "Audience",
+    description: "Divorce à l'amiable",
+    avocatAssigné: "Me Durand",
+  },
+];
+
 export default function Layout({ role, onLogout }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeSection, setActiveSection] = useState<"dashboard"|"dossiers"|"rendezvous"|"utilisateurs">("dashboard");
+
+  const [dossiers, setDossiers] = useState<DossierClient[]>(initialDossiers);
 
   return (
     <div className="flex min-h-screen">
@@ -41,7 +68,9 @@ export default function Layout({ role, onLogout }: LayoutProps) {
 
       {/* Contenu principal */}
       <div className="flex-1 bg-gradient-to-br from-black via-gray-900 to-black text-white p-6 ml-72">
-        {activeSection === "dashboard" && <DashboardContent />}
+        {activeSection === "dashboard" && (
+          <DashboardWithCalendar dossiers={dossiers} setDossiers={setDossiers} />
+        )}
         {activeSection === "dossiers" && <Dossiers />}
         {activeSection === "rendezvous" && <RendezVous />}
         {activeSection === "utilisateurs" && <Utilisateurs />}

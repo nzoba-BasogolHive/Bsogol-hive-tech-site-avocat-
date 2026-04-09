@@ -42,29 +42,28 @@ interface AjouterRendezVousProps {
 
 const AjouterRendezVous = ({ onAdd }: AjouterRendezVousProps) => {
   const handleAdd = () => {
-    const newDossier = {
-      nomClient: prompt("Nom du client ?") || "Client",
+    onAdd({
+      nomClient: "Nouveau Client",
       telephone: "0000000000",
       dateEnregistrement: new Date().toISOString(),
-      titreDossier: prompt("Titre du dossier ?") || "Dossier",
+      titreDossier: "Nouveau Dossier",
       branche: "Civil",
       status: "En attente",
-      description: "",
+      description: "Description",
       avocatAssigné: "Me Test",
       rendezVous: new Date().toISOString(),
-    };
-
-    onAdd(newDossier);
+    });
   };
-
-  return (
-    <button onClick={handleAdd} className="bg-blue-600 px-3 py-1 rounded text-white">
-      Ajouter
-    </button>
-  );
+  return <button onClick={handleAdd} className="bg-blue-600 px-3 py-1 rounded text-white">Ajouter RDV</button>;
 };
+interface DashboardProps {
+  dossiers: DossierClient[];
+  setDossiers: React.Dispatch<React.SetStateAction<DossierClient[]>>;
+}
 
-export default function DashboardWithCalendar() {
+
+
+export default function DashboardWithCalendar({ dossiers, setDossiers }: DashboardProps) {
   const [user, setUser] = useState<User>({
     nom: "Jean Dupont",
     email: "jean.dupont@example.com",
@@ -82,7 +81,7 @@ export default function DashboardWithCalendar() {
     { nomClient: "Paul Martin", telephone: "0667788990", dateEnregistrement: "2026-01-15", titreDossier: "Contrat", branche: "Commercial", status: "Terminé", description: "Litige contrat", avocatAssigné: "Me Dupont" },
   ];
 
-  const [dossiers, setDossiers] = useState<DossierClient[]>(initialDossiers);
+ 
   const [notifications, setNotifications] = useState<Notification[]>([
     { id: "1", message: "Rendez-vous avec Jean Dupont", date: "2026-04-05T10:00", lu: false },
     { id: "2", message: "Nouvelle audience pour Marie Curie", date: "2026-04-03T14:00", lu: false },
@@ -132,39 +131,36 @@ export default function DashboardWithCalendar() {
   const dossiersForSelectedDate = filteredDossiers.filter(d =>
     d.rendezVous && new Date(d.rendezVous).toDateString() === selectedDate.toDateString()
   );
-const addDossier = (newDossier: DossierClient) => {
-  setDossiers(prev => [...prev, newDossier]);
-};
-  const statusColors: Record<string, string> = {
-    "En cours": "bg-yellow-500",
-    "Audience": "bg-blue-500",
-    "Terminé": "bg-green-500",
-    "Suspendu": "bg-gray-500",
-    "Confirmé": "bg-purple-500",
-  };
 
-  const brancheColors: Record<string, string> = {
-    "Pénal": "bg-red-600",
-    "Civil": "bg-purple-600",
-    "Travail": "bg-indigo-600",
-    "Commercial": "bg-green-600",
-  };
+ const statusColors: Record<string, string> = {
+  "En cours": "bg-gray-100 text-gray-800",
+  "Audience": "bg-gray-200 text-gray-800",
+  "Terminé": "bg-gray-100 text-gray-600",
+  "Suspendu": "bg-gray-300 text-gray-700",
+  "Confirmé": "bg-gray-200 text-gray-900",
+};
+ const brancheColors: Record<string, string> = {
+  "Pénal": "bg-[#1e3a5f] text-white border border-[#162c46]",
+  "Civil": "bg-[#5a2a27] text-white border border-[#3f1d1b]",
+  "Travail": "bg-[#2f4f4f] text-white border border-[#223737]",
+  "Affaire": "bg-[#3a3a3a] text-white border border-[#2a2a2a]",
+};
 
   return (
-    <div className="min-h-screen bg-black text-white">
+  <div className="min-h-screen bg-white text-black">
       {/* NAVBAR */}
-      <div className="fixed top-0 left-0 w-full flex justify-between items-center bg-[#0B0F3F] p-4 z-50">
+     <div className="fixed top-0 left-0 w-full flex justify-between items-center bg-white border-b p-4 z-50">
         <input
           type="text"
           placeholder="Rechercher..."
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          className="w-1/3 p-2 rounded bg-white/10 text-white placeholder-white"
+         className="w-1/3 p-2 rounded bg-gray-100 text-black placeholder-gray-500"
         />
         <div className="flex items-center gap-4">
-          <button onClick={() => setActiveSection("agenda")}>Dashboard</button>
-          <button onClick={() => setActiveSection("dossiers")}>Dossiers</button>
-          <button onClick={() => setActiveSection("statutDossier")}>Statut Dossier</button>
+          <button onClick={() => setActiveSection("agenda")}className="text-white px-3 py-1 rounded hover:bg-white/10">Dashboard</button>
+          <button onClick={() => setActiveSection("dossiers")}className="text-white px-3 py-1 rounded hover:bg-white/10">Dossiers</button>
+          <button onClick={() => setActiveSection("statutDossier")}className="text-white px-3 py-1 rounded hover:bg-white/10">Statut Dossier</button>
           <button className="bg-red-600 px-2 py-1 rounded">Déconnecter</button>
 
           {/* Notifications */}
@@ -214,112 +210,49 @@ const addDossier = (newDossier: DossierClient) => {
         <div className="col-span-1 flex flex-col gap-2 mt-4">
           {["notifications", "agenda", "dossiers", "rendezvous", "statutDossier"].map(section => (
             <button key={section} onClick={() => setActiveSection(section as any)}
-              className={`p-2 rounded ${activeSection === section ? "bg-[#110767] text-white" : "bg-white/10"}`}>
-              {section.charAt(0).toUpperCase() + section.slice(1)}
-            </button>
+  className={`p-2 rounded ${activeSection === section ? "bg-blue-600" : "bg-gray-800"} text-white`}>
+  {section.charAt(0).toUpperCase() + section.slice(1)}
+</button>
           ))}
         </div>
 
         {/* Contenu */}
         <div className="col-span-3 space-y-4 mt-4">
-         {/* AGENDA */}
-{activeSection === "agenda" && (
-  <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-6">
-
-    <h2 className="text-xl font-bold">Agenda</h2>
-
-    {/* CALENDRIER AGRANDI */}
-    <div className="w-full flex justify-center">
-      <Calendar
-        onChange={(date) => {
-          if (date && !Array.isArray(date)) setSelectedDate(date);
-        }}
-        value={selectedDate}
-        className="bg-gradient-to-br from-[#0f172a] to-black text-white rounded-2xl p-5 w-full max-w-[500px] shadow-lg"
-      />
-    </div>
-
-    {/* TITRE */}
-    <h3 className="font-semibold text-lg">
-      Rendez-vous pour {selectedDate.toDateString()}
-    </h3>
-
-    {/* LISTE RDV */}
-    <ul className="space-y-3">
-      {dossiersForSelectedDate.map(d => (
-        <li
-          key={d.nomClient + d.titreDossier}
-          className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 bg-black/30 p-3 rounded-lg border border-white/10"
-        >
-          {/* INFOS */}
-          <div>
-            📅 <strong>{d.nomClient}</strong> ({d.titreDossier})  
-            <br />
-            🕒 {new Date(d.rendezVous!).toLocaleTimeString()}
-          </div>
-
-          {/* ACTIONS */}
-          <div className="flex flex-wrap gap-2">
-
-            {/* MODIFIER DATE */}
-            <input
-              type="datetime-local"
-              value={
-                d.rendezVous
-                  ? new Date(d.rendezVous).toISOString().slice(0, 16)
-                  : ""
-              }
-              onChange={e =>
-                setDossiers(prev =>
-                  prev.map(dd =>
-                    dd.nomClient === d.nomClient
-                      ? { ...dd, rendezVous: e.target.value }
-                      : dd
-                  )
-                )
-              }
-              className="bg-black/20 text-white px-2 py-1 rounded"
-            />
-
-            {/* SUPPRIMER AVEC CONFIRMATION */}
-            <button
-              onClick={() => {
-                if (window.confirm("Voulez-vous vraiment supprimer ce rendez-vous ?")) {
-                  setDossiers(prev =>
-                    prev.map(dd =>
-                      dd.nomClient === d.nomClient
-                        ? { ...dd, rendezVous: undefined, status: "En attente" }
-                        : dd
-                    )
-                  );
-                }
-              }}
-              className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white"
-            >
-              Supprimer
-            </button>
-
-            {/* CONFIRMER */}
-            {user.role === "avocat" && d.status === "En attente" && (
-              <button
-                onClick={() => confirmerRendezVous(d.nomClient)}
-                className="bg-green-600 hover:bg-green-700 px-3 py-1 rounded text-white"
-              >
-                Confirmer
-              </button>
-            )}
-          </div>
-        </li>
-      ))}
-    </ul>
-
-    {/* AJOUT RDV */}
-    <div className="pt-2">
-      <AjouterRendezVous onAdd={addDossier} />
-    </div>
-
-  </div>
-)}
+          {/* AGENDA */}
+          {activeSection === "agenda" && (
+            <div className="bg-white/5 p-4 rounded-xl border border-white/10 space-y-4">
+              <h2 className="text-lg font-bold mb-2">Agenda</h2>
+              <Calendar
+                onChange={(date) => { if (date && !Array.isArray(date)) setSelectedDate(date); }}
+                value={selectedDate}
+                className="bg-black text-white rounded-lg p-2"
+              />
+              <h3 className="font-semibold mt-2">Rendez-vous pour {selectedDate.toDateString()}</h3>
+              <ul>
+                {dossiersForSelectedDate.map(d => (
+                  <li key={d.nomClient} className="flex items-center gap-2 mb-2">
+                    📅 {d.nomClient} ({d.titreDossier}) - {new Date(d.rendezVous!).toLocaleTimeString()}
+                    <input
+                      type="datetime-local"
+                      value={d.rendezVous ? new Date(d.rendezVous).toISOString().slice(0,16) : ""}
+                      onChange={e => setDossiers(prev => prev.map(dd => dd.nomClient === d.nomClient ? { ...dd, rendezVous: e.target.value } : dd))}
+                      className="bg-black/20 text-white px-2 py-1 rounded"
+                    />
+                    <button
+                      onClick={() => setDossiers(prev => prev.map(dd => dd.nomClient === d.nomClient ? { ...dd, rendezVous: undefined, status: "En attente" } : dd))}
+                      className="bg-red-600 text-white px-2 py-1 rounded"
+                    >
+                      Supprimer
+                    </button>
+                    {user.role === "avocat" && d.status === "En attente" && (
+                      <button onClick={() => confirmerRendezVous(d.nomClient)} className="bg-green-600 text-white px-2 py-1 rounded">Confirmer</button>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <AjouterRendezVous onAdd={addRendezVous} />
+            </div>
+          )}
 
           {/* Reste des sections... */}
           {/* RENDEZ-VOUS */}
@@ -336,21 +269,11 @@ const addDossier = (newDossier: DossierClient) => {
                       className="bg-black/20 text-white px-2 py-1 rounded"
                     />
                     <button
-  onClick={() => {
-    if (window.confirm("Voulez-vous vraiment supprimer ce dossier ?")) {
-      setDossiers(prev =>
-        prev.map(dd =>
-          dd.nomClient === d.nomClient
-            ? { ...dd, rendezVous: undefined, status: "En attente" }
-            : dd
-        )
-      );
-    }
-  }}
-  className="bg-red-600 text-white px-2 py-1 rounded"
->
-  Supprimer
-</button>
+                      onClick={() => setDossiers(prev => prev.map(dd => dd.nomClient === d.nomClient ? { ...dd, rendezVous: undefined, status: "En attente" } : dd))}
+                      className="bg-red-600 text-white px-2 py-1 rounded"
+                    >
+                      Supprimer
+                    </button>
                     {user.role === "avocat" && d.status === "En attente" && (
                       <button onClick={() => confirmerRendezVous(d.nomClient)} className="bg-green-600 text-white px-2 py-1 rounded">Confirmer</button>
                     )}
@@ -408,7 +331,7 @@ const addDossier = (newDossier: DossierClient) => {
           {/* STATUT DOSSIER */}
           {activeSection === "statutDossier" && (
             <div className="space-y-4">
-              <select value={statutFilter} onChange={e => setStatutFilter(e.target.value)} className="p-2 rounded bg-black/30 text-black mb-4">
+              <select value={statutFilter} onChange={e => setStatutFilter(e.target.value)} className="p-2 rounded bg-black/30 text-white mb-4">
                 <option value="Tous">Tous les statuts</option>
                 <option value="En cours">Dossier en cours</option>
                 <option value="Audience">Dossier en audience</option>
