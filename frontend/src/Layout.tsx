@@ -3,9 +3,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import DashboardWithCalendar from "./pages/DashboardWithCalendar"; 
 import Dossiers from "./pages/Dossiers";
-import RendezVous from "./pages/RendezVous";
+
 import Utilisateurs from "./pages/Utilisateurs";
 import type { DossierClient, Role } from "./types"; // type-only import
+import RendezVous from "./pages/RendezVous";
 
 interface LayoutProps {
   role: Role;
@@ -56,11 +57,11 @@ export default function Layout({ role, onLogout }: LayoutProps) {
           >
             <h1 className="text-xl font-bold mb-6">Cabinet Luxe</h1>
             <nav className="flex flex-col gap-4">
-              <button onClick={()=>setActiveSection("dashboard")} className="hover:text-purple-400">Dashboard</button>
-              <button onClick={()=>setActiveSection("dossiers")} className="hover:text-purple-400">Dossiers</button>
-              <button onClick={()=>setActiveSection("rendezvous")} className="hover:text-purple-400">Rendez-vous</button>
-              {(role==="administrateur"||role==="avocat") && <button onClick={()=>setActiveSection("utilisateurs")} className="hover:text-purple-400">Utilisateurs</button>}
-              <button onClick={onLogout} className="mt-10 bg-purple-600 py-2 px-4 rounded">Déconnexion</button>
+              <button onClick={()=>setActiveSection("dashboard")} className="hover:text-blue-600">Dashboard</button>
+              <button onClick={()=>setActiveSection("dossiers")} className="hover:text-blue-600">Dossiers</button>
+              <button onClick={()=>setActiveSection("rendezvous")} className="hover:text-blue-600">Rendez-vous</button>
+              {(role==="administrateur"||role==="avocat") && <button onClick={()=>setActiveSection("utilisateurs")} className="hover:text-blue-600">Utilisateurs</button>}
+              <button onClick={onLogout} className="mt-10 bg-red-600 py-2 px-4 rounded">Déconnexion</button>
             </nav>
           </motion.div>
         )}
@@ -71,14 +72,12 @@ export default function Layout({ role, onLogout }: LayoutProps) {
         {activeSection === "dashboard" && (
           <DashboardWithCalendar dossiers={dossiers} setDossiers={setDossiers} />
         )}
-        {activeSection === "dossiers" && <Dossiers />}
-        {activeSection === "rendezvous" && (
- <DashboardWithCalendar
-  dossiers={dossiers}
-  setDossiers={setDossiers}
-  mode="rendezvous"
-/>
-
+        {activeSection === "dossiers" && (
+  <Dossiers dossiers={dossiers} setDossiers={setDossiers} />
+)}
+       
+{activeSection === "rendezvous" && (
+  <RendezVous dossiers={dossiers} setDossiers={setDossiers} />
 )}
         {activeSection === "utilisateurs" && <Utilisateurs />}
       </div>

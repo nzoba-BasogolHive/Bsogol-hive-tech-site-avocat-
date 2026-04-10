@@ -50,7 +50,7 @@ export default function Login({ onLogin }: LoginProps) {
         </select>
         <button
           onClick={handleSubmit}
-          className="w-full py-3 rounded-lg bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 font-semibold hover:scale-105 transition"
+          className="w-full py-3 rounded-lg bg-blue-600 via-pink-600 to-red-600 font-semibold hover:scale-105 transition"
         >
           Connexion
         </button>

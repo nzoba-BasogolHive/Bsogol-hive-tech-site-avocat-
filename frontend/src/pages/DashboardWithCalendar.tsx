@@ -204,9 +204,7 @@ useEffect(() => {
   "Travail": "bg-[#2f4f4f] text-white border border-[#223737]",
   "Affaire": "bg-[#3a3a3a] text-white border border-[#2a2a2a]",
 };
-const rendezVousConfirmes = dossiers.filter(
-  d => d.status === "Confirmé" && d.rendezVous
-);
+
 
 const getStartOfWeek = (date: Date) => {
   const d = new Date(date);
@@ -214,7 +212,13 @@ const getStartOfWeek = (date: Date) => {
   const diff = d.getDate() - day;
   return new Date(d.setDate(diff));
 };
+const rendezVousNonConfirmes = dossiers.filter(
+  d => d.rendezVous && d.status !== "Confirmé"
+);
 
+const rendezVousConfirmes = dossiers.filter(
+  d => d.rendezVous && d.status === "Confirmé"
+);
 const start = getStartOfWeek(new Date());
 const end = new Date(start);
 end.setDate(start.getDate() + 6);
@@ -223,6 +227,39 @@ const rendezVousSemaine = dossiers.filter(d => {
   if (!d.rendezVous) return false;
   const rdv = new Date(d.rendezVous);
   return rdv >= start && rdv <= end;
+});
+const getWeekDays = (date: Date) => {
+  const start = new Date(date);
+  const day = start.getDay(); // 0=dimanche
+
+  const mondayOffset = day === 0 ? -6 : 1 - day;
+  start.setDate(start.getDate() + mondayOffset);
+  start.setHours(0, 0, 0, 0);
+
+  return Array.from({ length: 6 }).map((_, i) => {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+    return d;
+  });
+};
+const weekDays = getWeekDays(selectedDate);
+
+const rendezVousByDay = weekDays.map(day => {
+  const items = dossiers.filter(d => {
+    if (!d.rendezVous) return false;
+    const rdv = new Date(d.rendezVous);
+
+    return (
+      rdv.getDate() === day.getDate() &&
+      rdv.getMonth() === day.getMonth() &&
+      rdv.getFullYear() === day.getFullYear()
+    );
+  });
+
+  return {
+    day,
+    items
+  };
 });
   return (
     
@@ -262,40 +299,77 @@ const rendezVousSemaine = dossiers.filter(d => {
     {/* 📅 AGENDA SEMAINE */}
     <div>
       <h2 className="text-xl font-bold mb-3">
-        Agenda de la semaine
+       
       </h2>
 
-      <table className="w-full border">
-        <thead>
-          <tr>
-            <th>Jour</th>
-            <th>Client</th>
-            <th>Motif</th>
-            <th>Heure</th>
-          </tr>
-        </thead>
+      <div>
+  <h2 className="text-xl font-bold mb-3">
+    Agenda de la semaine (Lundi → Samedi)
+  </h2>
 
-        <tbody>
-          {rendezVousSemaine.map(d => {
-            const date = new Date(d.rendezVous!);
+  <table className="w-full border">
+    <thead>
+      <tr>
+        <th className="border p-2">Jour</th>
+        <th className="border p-2">Client</th>
+        <th className="border p-2">Motif</th>
+        <th className="border p-2">Heure</th>
+      </tr>
+    </thead>
 
-            return (
-              <tr key={d.nomClient + d.rendezVous}>
-                <td>{date.toLocaleDateString()}</td>
-                <td>{d.nomClient}</td>
-                <td>{d.titreDossier}</td>
-                <td>{date.toLocaleTimeString()}</td>
+    <tbody>
+      {rendezVousByDay.map((dayBlock, i) => {
+        const isEmpty = dayBlock.items.length === 0;
+
+        return (
+          <>
+            {/* SI VIDE → UNE LIGNE GRISE */}
+            {isEmpty && (
+              <tr key={i} className="bg-gray-200">
+                <td className="border p-2">
+                  {dayBlock.day.toLocaleDateString()}
+                </td>
+                <td className="border p-2 text-gray-500" colSpan={3}>
+                  Aucun rendez-vous
+                </td>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            )}
+
+            {/* SI RÉUNIS PLUSIEURS RDV */}
+            {dayBlock.items.map((d, idx) => {
+              const date = new Date(d.rendezVous!);
+
+              return (
+                <tr key={d.nomClient + idx}>
+                  {idx === 0 && (
+                    <td
+                      className="border p-2"
+                      rowSpan={dayBlock.items.length}
+                    >
+                      {dayBlock.day.toLocaleDateString()}
+                    </td>
+                  )}
+
+                  <td className="border p-2">{d.nomClient}</td>
+                  <td className="border p-2">{d.titreDossier}</td>
+                  <td className="border p-2">
+                    {date.toLocaleTimeString()}
+                  </td>
+                </tr>
+              );
+            })}
+          </>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
     </div>
 
   </div>
 )}
       {/* NAVBAR */}
-     <div className="fixed top-0 left-0 w-full flex justify-between items-center bg-white border-b p-4 z-50">
+     <div className="fixed top-0 left-0 w-full flex justify-between items-center bg-[#0B0F3F] border-b p-4 z-50">
         <input
           type="text"
           placeholder="Rechercher..."
@@ -398,7 +472,27 @@ const rendezVousSemaine = dossiers.filter(d => {
                   </li>
                 ))}
               </ul>
-              <AjouterRendezVous onAdd={addRendezVous} />
+              <AjouterRendezVous onAdd={addRendezVous} /><div className="mt-6">
+  <h3 className="font-bold mb-2">
+    Rendez-vous en attente de confirmation
+  </h3>
+
+  <ul>
+    {rendezVousNonConfirmes.map(d => (
+      <li key={d.nomClient + d.rendezVous}>
+        📌 {d.nomClient} — {d.titreDossier} —{" "}
+        {new Date(d.rendezVous!).toLocaleString()}
+
+        <button
+          onClick={() => confirmerRendezVous(d.nomClient)}
+          className="ml-3 bg-green-600 px-2 py-1 text-white rounded"
+        >
+          Confirmer
+        </button>
+      </li>
+    ))}
+  </ul>
+</div>
             </div>
           )}
 
@@ -436,7 +530,7 @@ const rendezVousSemaine = dossiers.filter(d => {
           {activeSection === "notifications" && (
             <div className="bg-white/5 p-4 rounded-xl border border-white/10">
               {filteredNotifications.map(n => (
-                <div key={n.id} onClick={() => markAsRead(n.id)} className={`p-2 rounded mb-1 cursor-pointer ${!n.lu ? "bg-[#110767]" : ""}`}>
+                <div key={n.id} onClick={() => markAsRead(n.id)} className={`p-2 rounded mb-1 cursor-pointer ${!n.lu ? "bg-blue-200" : ""}`}>
                   {n.message} - {new Date(n.date).toLocaleString()}
                 </div>
               ))}

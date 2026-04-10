@@ -24,6 +24,7 @@ export default function ContactSection() {
       [e.target.name]: e.target.value,
     });
   };
+  
 
   // Soumission du formulaire
   const handleSubmit = async (e: React.FormEvent) => {

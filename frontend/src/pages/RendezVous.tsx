@@ -1,12 +1,58 @@
-export default function RendezVous() {
+import type { DossierClient } from "../types";
+
+interface Props {
+  dossiers: DossierClient[];
+  setDossiers: React.Dispatch<React.SetStateAction<DossierClient[]>>;
+}
+interface RendezVousProps {
+  dossiers: DossierClient[];
+  setDossiers: React.Dispatch<React.SetStateAction<DossierClient[]>>;
+}
+export default function RendezVous({ dossiers, setDossiers }: RendezVousProps) {
+  const rendezVousConfirmes = dossiers.filter(
+    d => d.rendezVous && d.status === "Confirmé"
+  );
+const ajouter = () => {
+  setDossiers(prev => [
+    ...prev,
+    {
+      nomClient: "Test",
+      telephone: "000",
+      dateEnregistrement: new Date().toISOString(),
+      titreDossier: "RDV",
+      branche: "Civil",
+      status: "En attente",
+      description: "",
+      avocatAssigné: "",
+      rendezVous: new Date().toISOString(),
+    }
+  ]);
+};
   return (
-    <div className="p-8">
-      <h2 className="text-2xl mb-6">Prendre un rendez-vous sécurisé</h2>
-      <div className="bg-white/5 p-6 rounded-2xl border border-white/10 max-w-lg">
-        <input type="date" className="w-full mb-4 p-3 rounded bg-black/40" />
-        <input type="time" className="w-full mb-4 p-3 rounded bg-black/40" />
-        <button className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">Confirmer</button>
-      </div>
+    <div className="p-6">
+      <h2 className="text-xl font-bold mb-4">
+        Rendez-vous confirmés
+      </h2>
+
+      <table className="w-full border">
+        <thead>
+          <tr>
+            <th>Client</th>
+            <th>Motif</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {rendezVousConfirmes.map(d => (
+            <tr key={d.nomClient + d.rendezVous}>
+              <td>{d.nomClient}</td>
+              <td>{d.titreDossier}</td>
+              <td>{new Date(d.rendezVous!).toLocaleString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
