@@ -1,22 +1,12 @@
 // src/components/DashboardWithCalendar.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 
 export type Role = "avocat" | "administrateur" | "secretaire";
 
-interface DossierClient {
-  nomClient: string;
-  telephone: string;
-  dateEnregistrement: string;
-  titreDossier: string;
-  branche: string;
-  status: string;
-  description: string;
-  avocatAssigné: string;
-  rendezVous?: string;
-}
+import type { DossierClient, Status } from "../types";
 
 interface Notification {
   id: string;
@@ -41,20 +31,43 @@ interface AjouterRendezVousProps {
 }
 
 const AjouterRendezVous = ({ onAdd }: AjouterRendezVousProps) => {
+  const [nomClient, setNomClient] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [motif, setMotif] = useState("");
+  const [date, setDate] = useState("");
+
   const handleAdd = () => {
+    if (!nomClient || !date) return;
+
     onAdd({
-      nomClient: "Nouveau Client",
-      telephone: "0000000000",
+      nomClient,
+      telephone,
       dateEnregistrement: new Date().toISOString(),
-      titreDossier: "Nouveau Dossier",
+      titreDossier: motif,
       branche: "Civil",
       status: "En attente",
-      description: "Description",
-      avocatAssigné: "Me Test",
-      rendezVous: new Date().toISOString(),
+      description: motif,
+      avocatAssigné: "Non assigné",
+      rendezVous: date,
     });
+
+    setNomClient("");
+    setTelephone("");
+    setMotif("");
+    setDate("");
   };
-  return <button onClick={handleAdd} className="bg-blue-600 px-3 py-1 rounded text-white">Ajouter RDV</button>;
+
+  return (
+    <div className="space-y-2 mt-3">
+      <input placeholder="Nom client" value={nomClient} onChange={e=>setNomClient(e.target.value)} className="p-2 w-full"/>
+      <input placeholder="Téléphone" value={telephone} onChange={e=>setTelephone(e.target.value)} className="p-2 w-full"/>
+      <input placeholder="Motif" value={motif} onChange={e=>setMotif(e.target.value)} className="p-2 w-full"/>
+      <input type="datetime-local" value={date} onChange={e=>setDate(e.target.value)} className="p-2 w-full"/>
+      <button onClick={handleAdd} className="bg-blue-600 px-3 py-1 rounded text-white">
+        Ajouter RDV
+      </button>
+    </div>
+  );
 };
 interface DashboardProps {
   dossiers: DossierClient[];
@@ -75,11 +88,7 @@ export default function DashboardWithCalendar({ dossiers, setDossiers }: Dashboa
     role: "avocat",
   });
 
-  const initialDossiers: DossierClient[] = [
-    { nomClient: "Jean Dupont", telephone: "0654321098", dateEnregistrement: "2026-03-01", titreDossier: "Vol", branche: "Pénal", status: "En cours", description: "Dossier vol avec témoin", avocatAssigné: "Me Martin", rendezVous: "2026-04-05T10:00" },
-    { nomClient: "Marie Curie", telephone: "0678912345", dateEnregistrement: "2026-02-20", titreDossier: "Divorce", branche: "Civil", status: "Audience", description: "Divorce à l'amiable", avocatAssigné: "Me Durand", rendezVous: "2026-04-03T14:00" },
-    { nomClient: "Paul Martin", telephone: "0667788990", dateEnregistrement: "2026-01-15", titreDossier: "Contrat", branche: "Commercial", status: "Terminé", description: "Litige contrat", avocatAssigné: "Me Dupont" },
-  ];
+ 
 
  
   const [notifications, setNotifications] = useState<Notification[]>([
@@ -94,7 +103,37 @@ export default function DashboardWithCalendar({ dossiers, setDossiers }: Dashboa
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [brancheFilter, setBrancheFilter] = useState<string>("Tous");
   const [statutFilter, setStatutFilter] = useState<string>("Tous");
+useEffect(() => {
+  const interval = setInterval(() => {
+    const now = new Date();
 
+    dossiers.forEach(d => {
+      if (!d.rendezVous) return;
+
+      const rdvDate = new Date(d.rendezVous);
+      const diff = (rdvDate.getTime() - now.getTime()) / (1000 * 60);
+
+      if (diff > 0 && diff <= 120) {
+        setNotifications(prev => {
+          const exists = prev.some(n => n.message.includes(d.nomClient));
+          if (exists) return prev;
+
+          return [
+            ...prev,
+            {
+              id: Date.now().toString(),
+              message: `⏰ Rappel: RDV avec ${d.nomClient} dans 2h`,
+              date: new Date().toISOString(),
+              lu: false,
+            },
+          ];
+        });
+      }
+    });
+  }, 60000);
+
+  return () => clearInterval(interval);
+}, [dossiers]);
   const addRendezVous = (rdv: DossierClient) => {
     setDossiers(prev => [...prev, rdv]);
     setNotifications(prev => [...prev, { id: (prev.length + 1).toString(), message: `Nouveau rendez-vous : ${rdv.nomClient}`, date: rdv.rendezVous!, lu: false }]);
@@ -113,7 +152,13 @@ export default function DashboardWithCalendar({ dossiers, setDossiers }: Dashboa
   };
 
   const updateDossierStatus = (nomClient: string, status: string) => {
-    setDossiers(prev => prev.map(d => d.nomClient === nomClient ? { ...d, status } : d));
+   setDossiers(prev =>
+  prev.map(d =>
+    d.nomClient === nomClient
+      ? { ...d, status: "Confirmé" as Status }
+      : d
+  )
+);
   };
 
   const filteredDossiers = dossiers
@@ -128,9 +173,18 @@ export default function DashboardWithCalendar({ dossiers, setDossiers }: Dashboa
     n.message.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const dossiersForSelectedDate = filteredDossiers.filter(d =>
-    d.rendezVous && new Date(d.rendezVous).toDateString() === selectedDate.toDateString()
-  );
+  const dossiersForSelectedDate = filteredDossiers.filter(d => {
+  if (!d.rendezVous) return false;
+
+  const rdvDate = new Date(d.rendezVous);
+  const start = new Date(selectedDate);
+  start.setDate(start.getDate() - start.getDay());
+
+  const end = new Date(start);
+  end.setDate(end.getDate() + 6);
+
+  return rdvDate >= start && rdvDate <= end;
+});
 
  const statusColors: Record<string, string> = {
   "En cours": "bg-gray-100 text-gray-800",

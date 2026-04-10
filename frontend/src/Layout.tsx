@@ -72,7 +72,10 @@ export default function Layout({ role, onLogout }: LayoutProps) {
           <DashboardWithCalendar dossiers={dossiers} setDossiers={setDossiers} />
         )}
         {activeSection === "dossiers" && <Dossiers />}
-        {activeSection === "rendezvous" && <RendezVous />}
+        {activeSection === "rendezvous" && (
+  <DashboardWithCalendar dossiers={dossiers} setDossiers={setDossiers} />
+
+)}
         {activeSection === "utilisateurs" && <Utilisateurs />}
       </div>
     </div>

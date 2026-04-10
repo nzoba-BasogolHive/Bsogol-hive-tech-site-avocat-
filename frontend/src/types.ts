@@ -1,21 +1,23 @@
 export type Role = "avocat" | "administrateur" | "secretaire";
-export type Status = "En cours" | "Audience" | "Terminé";
-export type Branche = "Pénal" | "Civil" | "Commercial";
+
+export type Branche = "Pénal" | "Civil" | "Travail" | "Commercial";
+
+export type Status =
+  | "En cours"
+  | "Audience"
+  | "Terminé"
+  | "Suspendu"
+  | "Confirmé"
+  | "En attente";
 
 export interface DossierClient {
   nomClient: string;
   telephone: string;
   dateEnregistrement: string;
   titreDossier: string;
-  branche: Branche;
-  status: Status;
+  branche: Branche; // ✅ important
+  status: Status;   // ✅ important
   description: string;
   avocatAssigné: string;
-  rendezVous?: string; // optionnel
-}
-
-export interface User {
-  nom: string;
-  email: string;
-  role: Role;
+  rendezVous?: string;
 }
