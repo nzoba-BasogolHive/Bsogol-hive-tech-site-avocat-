@@ -7,7 +7,11 @@ import 'react-calendar/dist/Calendar.css';
 export type Role = "avocat" | "administrateur" | "secretaire";
 
 import type { DossierClient, Status } from "../types";
-
+interface DashboardProps {
+  dossiers: DossierClient[];
+  setDossiers: React.Dispatch<React.SetStateAction<DossierClient[]>>;
+  mode?: "full" | "rendezvous";
+}
 interface Notification {
   id: string;
   message: string;
@@ -69,14 +73,15 @@ const AjouterRendezVous = ({ onAdd }: AjouterRendezVousProps) => {
     </div>
   );
 };
-interface DashboardProps {
-  dossiers: DossierClient[];
-  setDossiers: React.Dispatch<React.SetStateAction<DossierClient[]>>;
-}
 
 
 
-export default function DashboardWithCalendar({ dossiers, setDossiers }: DashboardProps) {
+
+export default function DashboardWithCalendar({
+  dossiers,
+  setDossiers,
+  mode = "full"
+}: DashboardProps){
   const [user, setUser] = useState<User>({
     nom: "Jean Dupont",
     email: "jean.dupont@example.com",
@@ -199,9 +204,96 @@ useEffect(() => {
   "Travail": "bg-[#2f4f4f] text-white border border-[#223737]",
   "Affaire": "bg-[#3a3a3a] text-white border border-[#2a2a2a]",
 };
+const rendezVousConfirmes = dossiers.filter(
+  d => d.status === "Confirmé" && d.rendezVous
+);
 
+const getStartOfWeek = (date: Date) => {
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = d.getDate() - day;
+  return new Date(d.setDate(diff));
+};
+
+const start = getStartOfWeek(new Date());
+const end = new Date(start);
+end.setDate(start.getDate() + 6);
+
+const rendezVousSemaine = dossiers.filter(d => {
+  if (!d.rendezVous) return false;
+  const rdv = new Date(d.rendezVous);
+  return rdv >= start && rdv <= end;
+});
   return (
+    
   <div className="min-h-screen bg-white text-black">
+    {mode === "rendezvous" && (
+  <div className="p-6 space-y-10">
+
+    {/* 📌 RÉPERTOIRE - RENDEZ-VOUS CONFIRMÉS */}
+    <div>
+      <h2 className="text-xl font-bold mb-3">
+        Rendez-vous confirmés
+      </h2>
+
+      <table className="w-full border">
+        <thead>
+          <tr>
+            <th>Client</th>
+            <th>Téléphone</th>
+            <th>Motif</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {rendezVousConfirmes.map(d => (
+            <tr key={d.nomClient}>
+              <td>{d.nomClient}</td>
+              <td>{d.telephone}</td>
+              <td>{d.titreDossier}</td>
+              <td>{new Date(d.rendezVous!).toLocaleString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {/* 📅 AGENDA SEMAINE */}
+    <div>
+      <h2 className="text-xl font-bold mb-3">
+        Agenda de la semaine
+      </h2>
+
+      <table className="w-full border">
+        <thead>
+          <tr>
+            <th>Jour</th>
+            <th>Client</th>
+            <th>Motif</th>
+            <th>Heure</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {rendezVousSemaine.map(d => {
+            const date = new Date(d.rendezVous!);
+
+            return (
+              <tr key={d.nomClient + d.rendezVous}>
+                <td>{date.toLocaleDateString()}</td>
+                <td>{d.nomClient}</td>
+                <td>{d.titreDossier}</td>
+                <td>{date.toLocaleTimeString()}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+)}
       {/* NAVBAR */}
      <div className="fixed top-0 left-0 w-full flex justify-between items-center bg-white border-b p-4 z-50">
         <input
@@ -216,6 +308,8 @@ useEffect(() => {
           <button onClick={() => setActiveSection("dossiers")}className="text-white px-3 py-1 rounded hover:bg-white/10">Dossiers</button>
           <button onClick={() => setActiveSection("statutDossier")}className="text-white px-3 py-1 rounded hover:bg-white/10">Statut Dossier</button>
           <button className="bg-red-600 px-2 py-1 rounded">Déconnecter</button>
+         
+
 
           {/* Notifications */}
           <div className="relative">
