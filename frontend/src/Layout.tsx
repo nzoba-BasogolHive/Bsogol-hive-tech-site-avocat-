@@ -1,19 +1,17 @@
 // src/Layout.tsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import DashboardWithCalendar from "./pages/DashboardWithCalendar"; 
+import DashboardWithCalendar from "./pages/DashboardWithCalendar";
 import Dossiers from "./pages/Dossiers";
-
 import Utilisateurs from "./pages/Utilisateurs";
-import type { DossierClient, Role } from "./types"; // type-only import
 import RendezVous from "./pages/RendezVous";
+import type { DossierClient, Role } from "./types";
 
 interface LayoutProps {
   role: Role;
-  onLogout: () => void; // pour bouton déconnexion
+  onLogout: () => void;
 }
 
-// Si tu n'as pas initialDossiers, tu peux définir un initial directement ici :
 const initialDossiers: DossierClient[] = [
   {
     nomClient: "Jean Dupont",
@@ -38,8 +36,11 @@ const initialDossiers: DossierClient[] = [
 ];
 
 export default function Layout({ role, onLogout }: LayoutProps) {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activeSection, setActiveSection] = useState<"dashboard"|"dossiers"|"rendezvous"|"utilisateurs">("dashboard");
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
+
+  const [activeSection, setActiveSection] = useState<
+    "dashboard" | "dossiers" | "rendezvous" | "utilisateurs"
+  >("dashboard");
 
   const [dossiers, setDossiers] = useState<DossierClient[]>(initialDossiers);
 
@@ -49,6 +50,7 @@ export default function Layout({ role, onLogout }: LayoutProps) {
       <AnimatePresence>
         {sidebarOpen && (
           <motion.div
+            key="sidebar" // ✅ important pour AnimatePresence
             initial={{ x: -300 }}
             animate={{ x: 0 }}
             exit={{ x: -300 }}
@@ -56,29 +58,70 @@ export default function Layout({ role, onLogout }: LayoutProps) {
             className="fixed top-0 left-0 w-72 h-screen bg-black/90 text-white p-6 border-r border-white/10 z-50"
           >
             <h1 className="text-xl font-bold mb-6">Cabinet Luxe</h1>
+
             <nav className="flex flex-col gap-4">
-              <button onClick={()=>setActiveSection("dashboard")} className="hover:text-blue-600">Dashboard</button>
-              <button onClick={()=>setActiveSection("dossiers")} className="hover:text-blue-600">Dossiers</button>
-              <button onClick={()=>setActiveSection("rendezvous")} className="hover:text-blue-600">Rendez-vous</button>
-              {(role==="administrateur"||role==="avocat") && <button onClick={()=>setActiveSection("utilisateurs")} className="hover:text-blue-600">Utilisateurs</button>}
-              <button onClick={onLogout} className="mt-10 bg-red-600 py-2 px-4 rounded">Déconnexion</button>
+              <button
+                onClick={() => setActiveSection("dashboard")}
+                className="hover:text-blue-600"
+              >
+                Dashboard
+              </button>
+
+              <button
+                onClick={() => setActiveSection("dossiers")}
+                className="hover:text-blue-600"
+              >
+                Dossiers
+              </button>
+
+              <button
+                onClick={() => setActiveSection("rendezvous")}
+                className="hover:text-blue-600"
+              >
+                Rendez-vous
+              </button>
+
+              {(role === "administrateur" || role === "avocat") && (
+                <button
+                  onClick={() => setActiveSection("utilisateurs")}
+                  className="hover:text-blue-600"
+                >
+                  Utilisateurs
+                </button>
+              )}
+
+              <button
+                onClick={onLogout}
+                className="mt-10 bg-red-600 py-2 px-4 rounded"
+              >
+                Déconnexion
+              </button>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Contenu principal */}
-      <div className="flex-1 bg-gradient-to-br from-black via-gray-900 to-black text-white p-6 ml-72">
+      <div
+        className={`flex-1 bg-gradient-to-br from-black via-gray-900 to-black text-white p-6 transition-all duration-300 ${
+          sidebarOpen ? "ml-72" : "ml-0"
+        }`}
+      >
         {activeSection === "dashboard" && (
-          <DashboardWithCalendar dossiers={dossiers} setDossiers={setDossiers} />
+          <DashboardWithCalendar
+            dossiers={dossiers}
+            setDossiers={setDossiers}
+          />
         )}
+
         {activeSection === "dossiers" && (
-  <Dossiers dossiers={dossiers} setDossiers={setDossiers} />
-)}
-       
-{activeSection === "rendezvous" && (
-  <RendezVous dossiers={dossiers} setDossiers={setDossiers} />
-)}
+          <Dossiers dossiers={dossiers} setDossiers={setDossiers} />
+        )}
+
+        {activeSection === "rendezvous" && (
+          <RendezVous dossiers={dossiers} setDossiers={setDossiers} />
+        )}
+
         {activeSection === "utilisateurs" && <Utilisateurs />}
       </div>
     </div>
