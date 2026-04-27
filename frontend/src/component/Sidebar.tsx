@@ -13,7 +13,7 @@ export default function Sidebar({ role, isOpen, toggle }: SidebarProps) {
     <AnimatePresence>
       {isOpen && (
         <motion.div initial={{x:-300}} animate={{x:0}} exit={{x:-300}} transition={{type:"spring", stiffness:200, damping:30}}
-          className="fixed top-0 left-0 w-72 bg-black/90 backdrop-blur-xl text-white h-screen p-6 border-r border-white/10 z-50">
+         className="w-72 h-screen bg-black/90 text-white p-6 border-r border-white/10">
           <button onClick={toggle} className="text-white mb-6 px-2 py-1 border border-white/20 rounded hover:bg-white/10 transition">Fermer</button>
           <h1 className="text-xl font-bold mb-10">Cabinet Luxe</h1>
           <nav className="flex flex-col gap-4">

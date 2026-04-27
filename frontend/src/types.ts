@@ -10,13 +10,40 @@ export type Status =
   | "Confirmé"
   | "En attente";
 
+/* ================= USER SYSTEM ================= */
+
+export interface BaseUser {
+  nom: string;
+  email: string;
+   telephone: string;
+  adresse: string;
+   statut: string;
+  role: Role;
+}
+
+export interface AvocatUser extends BaseUser {
+  role: "avocat";
+  specialite: string;
+  barreau: string;
+}
+
+export interface SecretaireUser extends BaseUser {
+  role: "secretaire";
+  poste: string;
+}
+
+/* 🔥 UNIQUE User TYPE (IMPORTANT) */
+export type User = AvocatUser | SecretaireUser | BaseUser;
+
+/* ================= DOSSIERS ================= */
+
 export interface DossierClient {
   nomClient: string;
   telephone: string;
   dateEnregistrement: string;
   titreDossier: string;
-  branche: Branche; // ✅ important
-  status: Status;   // ✅ important
+  branche: Branche;
+  status: Status;
   description: string;
   avocatAssigné: string;
   rendezVous?: string;

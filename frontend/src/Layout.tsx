@@ -103,9 +103,7 @@ export default function Layout({ role, onLogout }: LayoutProps) {
 
       {/* Contenu principal */}
       <div
-        className={`flex-1 bg-gradient-to-br from-black via-gray-900 to-black text-white p-6 transition-all duration-300 ${
-          sidebarOpen ? "ml-72" : "ml-0"
-        }`}
+        className="flex-1 bg-gray-50 text-black p-6"
       >
         {activeSection === "dashboard" && (
           <DashboardWithCalendar

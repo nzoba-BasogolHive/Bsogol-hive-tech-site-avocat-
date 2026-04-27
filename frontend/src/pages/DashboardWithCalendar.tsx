@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
+import { useNavigate } from "react-router-dom";
+
 
 export type Role = "avocat" | "administrateur" | "secretaire";
 
@@ -82,6 +84,7 @@ export default function DashboardWithCalendar({
   setDossiers,
   mode = "full"
 }: DashboardProps){
+  const navigate = useNavigate();
   const [user, setUser] = useState<User>({
     nom: "Jean Dupont",
     email: "jean.dupont@example.com",
@@ -404,7 +407,12 @@ const rendezVousByDay = weekDays.map(day => {
 
           {/* Avatar */}
           <div className="relative">
-            <img src={user.avatarUrl} alt="avatar" className="w-10 h-10 rounded-full cursor-pointer" onClick={() => setShowUserMenu(prev => !prev)} />
+            <img
+  src={user.avatarUrl}
+  alt="avatar"
+  className="w-10 h-10 rounded-full cursor-pointer hover:scale-105 transition"
+  onClick={() => navigate("/profile")}
+/>
             {showUserMenu && (
               <div className="absolute right-0 mt-2 w-64 bg-black text-white rounded-xl border border-white/20 p-3 shadow-lg space-y-1">
                 <p><strong>{user.nom}</strong></p>

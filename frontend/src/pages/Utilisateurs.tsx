@@ -9,7 +9,11 @@ export default function Utilisateurs() {
 
   const addUser = () => {
     if (nom && email) {
-      setUsers([...users, { nom, email, role }]);
+      type SimpleUser = {
+  nom: string;
+  email: string;
+  role: Role;
+};
       setNom(""); setEmail(""); setRole("secretaire");
     }
   };

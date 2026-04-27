@@ -22,7 +22,7 @@ export default function Login({ onLogin }: LoginProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white">
+    <div className="min-h-screen flex items-center justify-center bg-grid/90 text-black">
       <div className="bg-white/5 backdrop-blur-xl p-10 rounded-3xl shadow-2xl w-full max-w-md border border-white/10">
         <h2 className="text-3xl font-semibold mb-6 text-center">Espace Client Sécurisé</h2>
         <input
