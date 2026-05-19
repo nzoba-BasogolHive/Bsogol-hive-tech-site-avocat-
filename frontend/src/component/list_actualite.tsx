@@ -159,7 +159,7 @@ export default function Actualites() {
       title: "Urbanisme et droit de l’habitat au Cameroun",
       text: "Nouvelles initiatives législatives sur la planification urbaine. :contentReference[oaicite:17]{index=17}",
       auteur: "Urbaniste juridique",
-      link: "/blog_immobilier2",
+      link: "/blogimm",
     },
   ];
 

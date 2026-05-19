@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
-import Login from "./Login"; // Page login sécurisée
-import Layout from "./Layout"; // Dashboard complet
+
 import type { Role } from "./types";
 
 // Navbar site public
 import NavbarComponent from "./component/Navbar";
+
 
 // Pages publiques
 import Accueil from "./pages/Accueil";
@@ -27,17 +27,24 @@ import Blog_fiscal from "./component/blog_fiscale";
 import BlogCivil from "./component/blog_civil";
 import Contact from "./pages/contact";
 import Formulaires from "./pages/formulaires";
+import DashboardWithCalendar from "./pages/DashboardWithCalendar";
+
 
 /* Layout pour le site public */
 function PublicLayout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
+  const isDashboard =
+    location.pathname === "/DashboardWithCalendar";
+
   return (
     <div>
-      <NavbarComponent />
+      {!isDashboard && <NavbarComponent />}
+
       <main>{children}</main>
     </div>
   );
 }
-
 /* Contenu principal avec gestion des routes */
 function AppContent() {
   const location = useLocation();
@@ -68,16 +75,10 @@ function AppContent() {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         {/* LOGIN */}
-        <Route
-          path="/login"
-          element={auth ? <Navigate to="/dashboard" replace /> : <Login onLogin={handleLogin} />}
-        />
-
+       
+ 
         {/* DASHBOARD SÉCURISÉ */}
-        <Route
-          path="/dashboard/*"
-          element={auth && role ? <Layout role={role} onLogout={handleLogout} /> : <Navigate to="/login" replace />}
-        />
+       
 
         {/* SITE PUBLIC */}
         <Route
@@ -101,6 +102,7 @@ function AppContent() {
                 <Route path="blog_civil" element={<BlogCivil />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="formulaires" element={<Formulaires />} />
+                 <Route path="DashboardWithCalendar" element={<DashboardWithCalendar />} />
               </Routes>
             </PublicLayout>
           }
