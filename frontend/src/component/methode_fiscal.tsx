@@ -32,9 +32,13 @@ text: "Accompagnement lors d’un contrôle fiscal ou représentation devant les
 ];
 
 return (
+<section className="relative overflow-hidden bg-[#0a0814] py-16 md:py-24 text-white">
+{/* BACKGROUND PREMIUM */}
+<div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),transparent_45%)]" />
 
-<section className="bg-[#1E1671] py-16 md:py-24 text-white">
+<div className="absolute top-0 left-1/4 w-[400px] h-[250px] bg-[#1b0f6b]/40 blur-[120px] rounded-full pointer-events-none" />
 
+<div className="absolute bottom-0 right-0 w-[300px] h-[200px] bg-[#c9a84c]/10 blur-[100px] rounded-full pointer-events-none" />
 <div className="section-container mx-auto px-6">
 
 {/* TITRE */}

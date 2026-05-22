@@ -18,8 +18,8 @@ export default function Hero() {
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* OVERLAY */}
-        <div className="absolute inset-0 bg-[#110767]/45"></div>
+        {/* OVERLAY PREMIUM (harmonisé footer) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-[#0a0814]/60 to-black/75"></div>
 
         {/* NAVBAR */}
         <div className="absolute top-0 left-0 w-full z-20">
@@ -34,15 +34,20 @@ export default function Hero() {
           <div className="max-w-6xl mx-auto px-6 text-white">
 
             <h1
-              className="font-bold leading-tight mb-6 text-3xl sm:text-4xl md:text-6xl lg:text-7xl"
-              style={{ fontFamily: "Garamond, serif" }}
+              className="font-bold leading-tight mb-6 text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white/95"
+              style={{
+                fontFamily: "Garamond, serif",
+                textShadow: "0 10px 30px rgba(0,0,0,0.6)"
+              }}
             >
               La Justice au Service <br />
-              de Vos Droits
+              <span className="text-[#c9a84c]">
+                de Vos Droits
+              </span>
             </h1>
 
             <p
-              className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mb-8"
+              className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mb-8 text-white/75"
               style={{ fontFamily: "Garamond, serif" }}
             >
               Notre cabinet d'avocats vous accompagne avec rigueur et
@@ -52,7 +57,7 @@ export default function Hero() {
 
             <Link
               to="/contact"
-              className="bg-red-600 text-white px-6 py-3 rounded-md hover:bg-red-700 transition"
+              className="bg-[#c9a84c] text-[#0a0814] px-6 py-3 rounded-md hover:bg-[#b8963f] transition shadow-lg"
             >
               Nous contacter
             </Link>
@@ -62,7 +67,6 @@ export default function Hero() {
         </div>
 
       </section>
-
 
       {/* SECTION 3 BLOCS */}
       <section className="w-full flex justify-center px-6 -mt-16 md:-mt-24 relative z-30">
@@ -85,11 +89,12 @@ export default function Hero() {
                 style={{ fontFamily: "Garamond, serif" }}
               >
                 Respect et Dignité <br />
-                <b>Nos clients sont comme une famille</b>
+                <b className="text-[#0a0814]">
+                  Nos clients sont comme une famille
+                </b>
               </p>
 
             </div>
-
 
             {/* BLOC 2 */}
             <div className="flex items-center gap-4">
@@ -105,11 +110,12 @@ export default function Hero() {
                 style={{ fontFamily: "Garamond, serif" }}
               >
                 Chaque cas est unique <br />
-                <b>Représentation juridique de haut niveau</b>
+                <b className="text-[#0a0814]">
+                  Représentation juridique de haut niveau
+                </b>
               </p>
 
             </div>
-
 
             {/* BLOC 3 */}
             <div className="flex items-center gap-4">
@@ -125,7 +131,9 @@ export default function Hero() {
                 style={{ fontFamily: "Garamond, serif" }}
               >
                 Équipe expérimentée <br />
-                <b>Avocats dévoués et primés</b>
+                <b className="text-[#0a0814]">
+                  Avocats dévoués et primés
+                </b>
               </p>
 
             </div>

@@ -45,7 +45,7 @@ type PageId =
   | "utilisateurs" | "statistiques" | "profil" | "demandes";
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
-const COLORS: string[] = ["#110767","#1a0f7a","#1E1671","#0d0655","#2d1b8e","#16086e"];
+const COLORS: string[] = ["#110767","#1a0f7a","#1E1671","#0d0655","#dbdae2","#16086e"];
 const BRANCHES: string[] = ["Droit du travail","Droit pénal","Droit des sociétés","Droit de la famille","Droit immobilier","Droit fiscal","Droit civil"];
 const STATUTS_DOS: string[] = ["En cours","En attente","Plaidoirie","Urgent","Gagné","Perdu","Classé"];
 const ROLES: string[] = ["Avocat","Secrétaire","Stagiaire","Associé"];
@@ -1148,7 +1148,7 @@ function Sidebar({ page, setPage, counts }: SidebarProps) {
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl flex items-center justify-center border" style={{ background:"rgba(255,255,255,0.1)",borderColor:"rgba(255,255,255,0.15)" }}><Scale size={16} className="text-white"/></div>
           <div>
-            <p className="text-sm font-bold text-white" style={{ fontFamily:"Garamond, serif",letterSpacing:"0.05em" }}>justice a tout prix </p>
+            <p className="text-sm font-bold text-white" style={{ fontFamily:"Garamond, serif",letterSpacing:"0.05em" }}>LexOffice</p>
             <p className="text-[10px] font-medium uppercase tracking-widest" style={{ color:"rgba(255,255,255,0.4)" }}>Cabinet juridique</p>
           </div>
         </div>
@@ -1298,7 +1298,7 @@ function PageLogin({ onLogin, allUsers }: PageLoginProps) {
         className="bg-white rounded-3xl shadow-2xl p-8 w-96 relative">
         <div className="text-center mb-7">
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-white mx-auto mb-4" style={{ background:"#110767" }}><Scale size={24}/></div>
-          <h1 className="text-xl font-bold" style={{ fontFamily:"Garamond, serif",color:"#110767",letterSpacing:"0.05em" }}>justice a tout prix </h1>
+          <h1 className="text-xl font-bold" style={{ fontFamily:"Garamond, serif",color:"#110767",letterSpacing:"0.05em" }}>Justice à Tout Prix</h1>
           <div className="flex items-center justify-center gap-2 mt-2 mb-1">
             <div className="h-px w-8" style={{ background:"#C9A84C" }}/><div className="w-1 h-1 rounded-full" style={{ background:"#C9A84C" }}/><div className="h-px w-8" style={{ background:"#C9A84C" }}/>
           </div>
@@ -1432,3 +1432,8 @@ useEffect(() => {
     </div>
   );
 }
+    
+
+
+
+                                                                

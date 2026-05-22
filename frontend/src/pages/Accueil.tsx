@@ -13,7 +13,7 @@ export default function Accueil() {
        <Hero/>
        <Nos_particularites />
 
-      <Aproposaccueil />
+   <Aproposaccueil/>
 
       <Expertiseaccueil />
 

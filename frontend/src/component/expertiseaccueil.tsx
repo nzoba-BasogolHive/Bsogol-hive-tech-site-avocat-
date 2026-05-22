@@ -9,116 +9,178 @@ import { Link } from "react-router-dom";
 
 const expertises = [
   {
+    num: "01",
     icon: icon1,
     title: "Droit des affaires",
-    subtitle: "Conseil et accompagnement juridique",
+    subtitle: "Conseil et accompagnement juridique pour vos transactions et opérations commerciales.",
     link: "/droit-affaires",
   },
   {
+    num: "02",
     icon: icon2,
     title: "Droit immobilier",
-    subtitle: "Gestion et sécurisation de vos biens",
+    subtitle: "Gestion et sécurisation de vos biens, transactions et contentieux locatifs.",
     link: "/droit-immobilier",
   },
   {
+    num: "03",
     icon: icon3,
     title: "Droit pénal",
-    subtitle: "Défense et représentation efficace",
+    subtitle: "Défense et représentation efficace devant toutes les juridictions pénales.",
     link: "/droit-penal",
   },
   {
+    num: "04",
     icon: icon4,
     title: "Droit fiscal",
-    subtitle: "Optimisation et conformité fiscale",
+    subtitle: "Optimisation et conformité fiscale pour entreprises et particuliers.",
     link: "/droit-fiscal",
   },
   {
+    num: "05",
     icon: icon5,
     title: "Droit social",
-    subtitle: "Relations employeurs salariés",
+    subtitle: "Relations employeurs-salariés, négociations et litiges de droit du travail.",
     link: "/droit-travail",
   },
   {
+    num: "06",
     icon: icon6,
     title: "Contentieux",
-    subtitle: "Résolution de litiges complexes",
+    subtitle: "Résolution de litiges complexes et stratégie judiciaire sur mesure.",
     link: "/contentieux",
   },
 ];
 
 export default function Expertiseaccueil() {
   return (
-    <section className="relative w-full py-20 md:py-32 lg:py-40 bg-white overflow-hidden md:-mt-40">
+    <section className="relative w-full py-20 md:py-28 overflow-hidden" style={{ background: "#F8F6F1" }}>
+
+      {/* Filigrane décoratif */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: "clamp(80px, 20vw, 200px)",
+          fontWeight: 700,
+          color: "rgba(17,7,103,0.04)",
+          letterSpacing: "0.15em",
+          whiteSpace: "nowrap",
+        }}
+      >
+        DROIT
+      </span>
 
       <Reveal>
+        <div className="relative max-w-6xl mx-auto px-6 md:px-10">
+
 
         <div className="section-container mx-auto px-6 md:px-8">
 
           {/* TITRE */}
 
-          <div className="text-center mb-14 md:mb-20">
+=======
+          {/* EN-TÊTE */}
 
-            <p className="text-red-700 text-lg md:text-xl font-medium tracking-wide">
-              NOS EXPERTISES
+          <div className="text-center mb-14 md:mb-20">
+            <p className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.25em] uppercase mb-4"
+               style={{ color: "#8B1A2F" }}>
+              <span style={{ width: 28, height: 0.5, background: "#8B1A2F", opacity: 0.6, display: "inline-block" }} />
+              Nos expertises
+              <span style={{ width: 28, height: 0.5, background: "#8B1A2F", opacity: 0.6, display: "inline-block" }} />
             </p>
 
-            <h2 className="font-bold text-[#110767] text-3xl md:text-4xl lg:text-5xl mt-2">
+            <h2
+              className="font-bold text-4xl md:text-5xl lg:text-[52px] leading-tight tracking-tight mb-5"
+              style={{ fontFamily: "'Playfair Display', serif", color: "#110767" }}
+            >
               Domaines de Compétences
             </h2>
 
-            <div className="w-20 md:w-24 h-1 bg-red-700 mx-auto mt-4 rounded-full"></div>
-
-            <p className="max-w-3xl mx-auto mt-6 text-gray-700 text-base md:text-lg">
-              Une équipe d'avocats spécialisés pour répondre à l'ensemble
-              de vos besoins juridiques avec précision et efficacité.
+            <p className="max-w-lg mx-auto text-sm md:text-base leading-relaxed font-light" style={{ color: "#666" }}>
+              Une équipe d'avocats spécialisés pour répondre à l'ensemble de vos
+              besoins juridiques avec précision et efficacité.
             </p>
-
           </div>
 
-          {/* CARDS */}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12">
-
-            {expertises.map((item, index) => (
-
+          {/* GRILLE */}
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3"
+            style={{ border: "0.5px solid rgba(17,7,103,0.12)" }}
+          >
+            {expertises.map((item, i) => (
               <Link
-                key={index}
+                key={i}
                 to={item.link}
-                className="group block bg-white rounded-xl shadow-lg p-8 md:-translate-y-3 hover:shadow-2xl transition duration-500"
+                className="group relative flex flex-col bg-white p-8 md:p-9 transition-colors duration-300 hover:bg-[#FDFCFA]"
+                style={{
+                  borderRight: (i + 1) % 3 !== 0 ? "0.5px solid rgba(17,7,103,0.1)" : "none",
+                  borderBottom: i < 3 ? "0.5px solid rgba(17,7,103,0.1)" : "none",
+                  textDecoration: "none",
+                }}
               >
+                {/* Barre rouge au survol */}
+                <span
+                  className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-300 ease-out"
+                  style={{ background: "#8B1A2F" }}
+                />
 
-                <div className="w-14 h-14 md:w-[70px] md:h-[70px] mb-6 transition-transform duration-500 group-hover:scale-110">
+                {/* Numéro */}
+                <span
+                  className="text-[11px] font-medium tracking-[0.12em] mb-5 transition-all duration-300"
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    color: "rgba(17,7,103,0.3)",
+                  }}
+                >
+                  {item.num}
+                </span>
 
+                {/* Icône */}
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-105"
+                  style={{ background: "#F0EEF8" }}
+                >
                   <img
                     src={item.icon}
-                    alt={item.title}
-                    className="w-full h-full object-contain"
+                    alt=""
+                    className="w-6 h-6 object-contain"
+                    style={{
+                      filter:
+                        "brightness(0) saturate(100%) invert(9%) sepia(62%) saturate(1200%) hue-rotate(225deg)",
+                    }}
                   />
-
                 </div>
 
-                <h4 className="font-bold text-[#110767] mb-3 text-xl md:text-2xl">
+                {/* Titre */}
+                <h3
+                  className="text-xl font-bold mb-2 leading-snug"
+                  style={{ fontFamily: "'Playfair Display', serif", color: "#110767" }}
+                >
                   {item.title}
-                </h4>
+                </h3>
 
-                <p className="mb-6 text-gray-700 text-sm md:text-base">
+                {/* Description */}
+                <p className="flex-1 text-sm leading-relaxed font-light mb-6" style={{ color: "#777" }}>
                   {item.subtitle}
                 </p>
 
-                <span className="text-red-700 flex items-center gap-2 font-semibold transition-all group-hover:gap-4">
-                  En savoir plus →
+                {/* Lien */}
+                <span
+                  className="inline-flex items-center gap-1.5 text-[11.5px] font-medium tracking-[0.1em] uppercase transition-all duration-200"
+                  style={{ color: "#8B1A2F" }}
+                >
+                  En savoir plus
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </span>
-
               </Link>
-
             ))}
-
           </div>
 
         </div>
-
+       </div>
       </Reveal>
-
     </section>
   );
-}
+}     
