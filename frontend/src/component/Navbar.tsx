@@ -84,27 +84,29 @@ export default function NavbarComponent() {
             aria-label="Menu"
           >
             <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`}
-              style={{ backgroundColor: "#c9a84c" }}
-            />
-            <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`}
-              style={{ backgroundColor: "#c9a84c" }}
-            />
-            <span
-              className={`block w-6 h-0.5 transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`}
-              style={{ backgroundColor: "#c9a84c" }}
-            />
+  className={`block w-6 h-0.5 bg-[#c9a84c] transition-all duration-300 ${
+    mobileOpen ? "rotate-45 translate-y-2" : ""
+  }`}
+/>
+
+<span
+  className={`block w-6 h-0.5 bg-[#c9a84c] transition-all duration-300 ${
+    mobileOpen ? "opacity-0" : ""
+  }`}
+/>
+
+<span
+  className={`block w-6 h-0.5 bg-[#c9a84c] transition-all duration-300 ${
+    mobileOpen ? "-rotate-45 -translate-y-2" : ""
+  }`}
+/>
           </button>
 
         </div>
 
         {/* MENU MOBILE */}
         {mobileOpen && (
-          <div
-            className="md:hidden mt-4 rounded-xl border overflow-hidden"
-            style={{ backgroundColor: "#0a0814", borderColor: "#1b0f6b" }}
-          >
+          <div className="md:hidden mt-4 rounded-xl border overflow-hidden bg-[#0a0814] border-[#1b0f6b]">
             <div className="flex flex-col text-sm font-medium">
 
               {navLinks.map((item) => (
@@ -126,13 +128,11 @@ export default function NavbarComponent() {
               ))}
 
               <button
-                onClick={() => { setOpen(true); setMobileOpen(false); }}
-                className="px-5 py-3.5 text-left border-b text-[#a89cc8] hover:text-[#c9a84c] hover:bg-[#1b0f6b]/20 transition-all duration-200"
-                style={{ borderColor: "#1b0f6b" }}
-              >
-                Services
-              </button>
-
+  onClick={() => { setOpen(true); setMobileOpen(false); }}
+  className="px-5 py-3.5 text-left border-b border-[#1b0f6b] text-[#a89cc8] hover:text-[#c9a84c] hover:bg-[#1b0f6b]/20 transition-all duration-200"
+>
+  Services
+</button>
               <NavLink
                 to="/contact"
                 onClick={() => setMobileOpen(false)}

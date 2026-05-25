@@ -16,7 +16,7 @@ const sujets = [
 
 export default function ActualitesAccueil() {
   return (
-<<<<<<< HEAD
+
     <section className="w-full bg-[#f4f4f4] py-16 md:py-24 relative overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-6 md:px-10">
         <Reveal>
@@ -99,7 +99,7 @@ export default function ActualitesAccueil() {
   />
   <h4 className="font-serif text-[20px]">DROIT DE L'IMMIGRATION</h4>
 </div>
-=======
+</div>
     <section className="w-full bg-[#f4f0eb] py-20 md:py-32 relative overflow-hidden">
 
       {/* bande accent gauche */}
@@ -227,11 +227,14 @@ export default function ActualitesAccueil() {
               Toutes nos actualités
               <FaArrowRight size={11} className="transition-transform duration-300 group-hover:translate-x-2" />
             </Link>
->>>>>>> Doungue
+
           </div>
 
         </Reveal>
       </div>
+    </section>
+    </Reveal>
+    </div>
     </section>
   );
 }
