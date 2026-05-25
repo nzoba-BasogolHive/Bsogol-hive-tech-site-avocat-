@@ -9,6 +9,7 @@ import FooterSection from "../component/FooterSection";
 
 
 export default function Droit_penal() {
+  
   return (
 
     <div>

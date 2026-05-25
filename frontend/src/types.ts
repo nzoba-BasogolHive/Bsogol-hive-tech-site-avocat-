@@ -15,11 +15,11 @@ export type Status =
 export interface BaseUser {
   nom: string;
   email: string;
-   telephone: string;
+  telephone: string;
   adresse: string;
-   statut: string;
+  statut: string;
   role: Role;
-}
+}                                  
 
 export interface AvocatUser extends BaseUser {
   role: "avocat";
@@ -32,8 +32,12 @@ export interface SecretaireUser extends BaseUser {
   poste: string;
 }
 
-/* 🔥 UNIQUE User TYPE (IMPORTANT) */
-export type User = AvocatUser | SecretaireUser | BaseUser;
+export interface AdminUser extends BaseUser {
+  role: "administrateur";
+}
+
+/* 🔥 TYPE FINAL */
+export type User = AvocatUser | SecretaireUser | AdminUser;
 
 /* ================= DOSSIERS ================= */
 

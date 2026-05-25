@@ -1,6 +1,6 @@
 import { FaCalendarAlt, FaUser } from "react-icons/fa";
 
-
+import { Link } from "react-router-dom";
 export default function ArticlePage() {
 
 return (
@@ -102,10 +102,12 @@ décisions prises par l’entreprise.
 Vous êtes confronté à un licenciement ou à un litige avec votre employeur ?
 </p>
 
-<button className="bg-[#1E1671] text-white px-6 py-3 rounded-md hover:bg-[#151057] transition w-full md:w-auto">
-Consulter un avocat →
-</button>
-
+ <Link
+          to="/formulaires"
+          className="inline-block bg-[#110767] text-white px-8 md:px-10 py-3 md:py-4 rounded-lg text-sm md:text-lg hover:scale-105 transition"
+        >
+         Consulter un avocat →
+        </Link>
 </div>
 
 </div>

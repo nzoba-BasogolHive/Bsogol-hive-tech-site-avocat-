@@ -135,13 +135,15 @@ export default function Commentaire() {
         {/* INDICATEURS */}
         <div className="flex justify-center gap-3 mt-8 md:mt-10">
           {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`w-3 h-3 rounded-full ${
-                i === index ? "bg-white" : "bg-white/40"
-              }`}
-            />
+           <button
+  key={i}
+  type="button"
+  onClick={() => setIndex(i)}
+  aria-label={`Aller au slide ${i + 1}`}
+  className={`w-3 h-3 rounded-full transition ${
+    i === index ? "bg-white" : "bg-white/40"
+  }`}
+/>
           ))}
         </div>
 

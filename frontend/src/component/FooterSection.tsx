@@ -35,8 +35,7 @@ export default function ContactSection() {
                 <div>
                   <h4 className="text-red-600 font-semibold">Adresse</h4>
                   <p className="text-gray-600 text-sm">
-                    123 Avenue des Champs-Élysées <br />
-                    75008 Paris, France
+                   Makepe cour supreme 
                   </p>
                 </div>
 
@@ -52,7 +51,7 @@ export default function ContactSection() {
                 <div>
                   <h4 className="text-red-600 font-semibold">Téléphone</h4>
                   <p className="text-gray-600 text-sm">
-                    +33 1 23 45 67 89
+                    +237 000 000 000 
                   </p>
                 </div>
 
@@ -156,13 +155,16 @@ export default function ContactSection() {
                   className="border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#1E1671]"
                 />
 
-                <select className="border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#1E1671]">
-                  <option>Domaine Juridique</option>
-                  <option>Droit Civil</option>
-                  <option>Droit Pénal</option>
-                  <option>Droit Fiscal</option>
-                  <option>Droit des Affaires</option>
-                </select>
+               <select
+  aria-label="Choisir un domaine juridique"
+  className="border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#1E1671]"
+>
+  <option value="">Domaine Juridique</option>
+  <option value="civil">Droit Civil</option>
+  <option value="penal">Droit Pénal</option>
+  <option value="fiscal">Droit Fiscal</option>
+  <option value="affaires">Droit des Affaires</option>
+</select>
 
               </div>
 

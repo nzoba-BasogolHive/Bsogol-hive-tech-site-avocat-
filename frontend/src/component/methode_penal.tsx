@@ -27,12 +27,18 @@ text: "Assistance dans les négociations ou représentation devant les juridicti
 
 return (
 
-<section className="relative bg-[#110767] py-16 md:py-24 text-white overflow-hidden">
-
+<section className="relative overflow-hidden bg-[#0a0814] py-16 md:py-24 text-white">
 {/* pattern discret */}
 
-<div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
+<>
+  {/* GLOW BACKGROUND */}
+  <div className="absolute top-0 left-1/4 w-[400px] h-[250px] bg-[#1b0f6b]/40 blur-[120px] rounded-full pointer-events-none" />
 
+  <div className="absolute bottom-0 right-0 w-[300px] h-[200px] bg-[#c9a84c]/10 blur-[100px] rounded-full pointer-events-none" />
+
+  {/* LIGHT OVERLAY */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),transparent_40%)]" />
+</>
 <div className="relative section-container mx-auto px-6">
 
 {/* TITRE */}
