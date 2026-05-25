@@ -1,4 +1,4 @@
-import { FaPhoneAlt, FaPaperPlane, FaArrowUp } from "react-icons/fa";
+import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaArrowUp, FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -6,199 +6,150 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const currentYear = new Date().getFullYear();
+
+  const navLinks = [
+    { label: "Accueil", to: "/" },
+    { label: "À Propos", to: "/apropos" },
+    { label: "Notre Équipe", to: "/equipe" },
+    { label: "Actualités", to: "/actualites" },
+    { label: "Contact", to: "/contact" },
+  ];
+
+  const domaines = [
+    "Droit Pénal",
+    "Droit Civil",
+    "Droit des Affaires",
+    "Droit du Travail",
+    "Droit Fiscal",
+  ];
+
+  const socialLinks = [
+    { href: "#", label: "Facebook", icon: <FaFacebookF size={14} /> },
+    { href: "#", label: "LinkedIn", icon: <FaLinkedinIn size={14} /> },
+    { href: "#", label: "Twitter", icon: <FaTwitter size={14} /> },
+  ];
+
   return (
-    <footer className="w-full relative overflow-hidden bg-[#0a0814] text-white pt-20 pb-10">
+    <footer className="w-full bg-[#0a0814] text-white pt-16 pb-6 relative">
 
-      {/* GLOW BACKGROUND */}
-      <div className="absolute top-0 left-1/4 w-[400px] h-[250px] bg-[#1b0f6b]/40 blur-[120px] rounded-full pointer-events-none" />
+      {/* BANDE DORÉE */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-[#c9a84c]" />
 
-      <div className="absolute bottom-0 right-0 w-[300px] h-[200px] bg-[#c9a84c]/10 blur-[100px] rounded-full pointer-events-none" />
-
-      {/* LIGHT OVERLAY */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_40%)]" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#1b0f6b]">
 
-          {/* LOGO */}
+          {/* COLONNE 1 — CABINET */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="block w-8 h-px bg-[#c9a84c]" />
-
-              <h3
-                className="text-xl font-bold text-white"
-                style={{ fontFamily: "Garamond, serif" }}
-              >
-                Logo
-              </h3>
-            </div>
-
-            <p className="font-semibold mb-4 text-[#c9a84c] tracking-wide uppercase text-sm">
+            <h2 className="text-lg font-bold text-[#c9a84c] uppercase tracking-widest mb-4">
               Cabinet Avocats
+            </h2>
+            <p className="text-[#a89cc8] text-sm leading-relaxed mb-6">
+              Un cabinet d'avocats d'excellence, dédié à la défense de vos
+              intérêts avec rigueur et professionnalisme depuis plus de 25 ans.
             </p>
-
-            <p className="text-white/55 text-sm leading-8">
-              Un cabinet d'avocats d'excellence, dédié à la défense
-              de vos intérêts avec rigueur et professionnalisme
-              depuis plus de 25 ans.
-            </p>
+           <div className="flex gap-3">
+  {socialLinks.map((s) => (
+    <a
+      key={s.label}
+      href={s.href}
+      aria-label={s.label}
+      className="w-9 h-9 rounded-full border border-[#1b0f6b] flex items-center justify-center text-[#a89cc8] hover:bg-[#c9a84c] hover:text-[#0a0814] hover:border-[#c9a84c] transition-all duration-300"
+    >
+      {s.icon}
+    </a>
+  ))}
+</div>
           </div>
 
-          {/* NAVIGATION */}
+          {/* COLONNE 2 — NAVIGATION */}
           <div>
-            <h3 className="font-semibold mb-6 uppercase tracking-[0.2em] text-[#c9a84c] text-sm">
+            <h3 className="text-sm font-bold text-[#c9a84c] uppercase tracking-widest mb-4">
               Navigation
             </h3>
-
-            <ul className="space-y-4 text-white/60">
-
-              <li>
-                <Link
-                  to="/"
-                  className="hover:text-white transition duration-300"
-                >
-                  Accueil
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/apropos"
-                  className="hover:text-white transition duration-300"
-                >
-                  A Propos
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/equipe"
-                  className="hover:text-white transition duration-300"
-                >
-                  Equipe
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/actualite"
-                  className="hover:text-white transition duration-300"
-                >
-                  Actualités
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/contact"
-                  className="hover:text-white transition duration-300"
-                >
-                  Contact
-                </Link>
-              </li>
-
+            <ul className="space-y-2 text-sm">
+              {navLinks.map((item) => (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className="text-[#a89cc8] hover:text-[#c9a84c] hover:pl-1 transition-all duration-200 flex items-center gap-2"
+                  >
+                    <span className="text-[#c9a84c] text-xs">›</span>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* DOMAINES */}
+          {/* COLONNE 3 — DOMAINES */}
           <div>
-            <h3 className="font-semibold mb-6 uppercase tracking-[0.2em] text-[#c9a84c] text-sm">
+            <h3 className="text-sm font-bold text-[#c9a84c] uppercase tracking-widest mb-4">
               Nos Domaines
             </h3>
-
-            <ul className="space-y-4 text-white/60">
-              <li>Droit Pénal</li>
-              <li>Droit Civil</li>
-              <li>Droit des Affaires</li>
-              <li>Droit du Travail</li>
-              <li>Droit Fiscal</li>
+            <ul className="space-y-2 text-sm">
+              {domaines.map((domaine) => (
+                <li key={domaine} className="text-[#a89cc8] flex items-center gap-2">
+                  <span className="text-[#c9a84c] text-xs">›</span>
+                  {domaine}
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* CONTACT */}
+          {/* COLONNE 4 — CONTACT */}
           <div>
-            <h3 className="font-semibold mb-6 uppercase tracking-[0.2em] text-[#c9a84c] text-sm">
+            <h3 className="text-sm font-bold text-[#c9a84c] uppercase tracking-widest mb-4">
               Contact
             </h3>
-
-            <div className="space-y-5">
-
-              <div className="flex items-center gap-4 text-white/60">
-                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                  <FaPaperPlane className="text-[#c9a84c]" />
-                </div>
-
-                <p>Makèpe, Douala</p>
-              </div>
-
-              <div className="flex items-center gap-4 text-white/60">
-                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                  <FaPhoneAlt className="text-[#c9a84c]" />
-                </div>
-
-                <p>+237 656413387</p>
-              </div>
-
-              <p className="text-white/60 pl-1">
-                contact@cabinet-avocat.fr
-              </p>
-
-            </div>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3 text-[#a89cc8]">
+                <FaMapMarkerAlt className="text-[#c9a84c] mt-0.5 shrink-0" />
+                <span>Makèpe, Douala, Cameroun</span>
+              </li>
+              <li className="flex items-center gap-3 text-[#a89cc8]">
+                <FaPhoneAlt className="text-[#c9a84c] shrink-0" />
+                <a href="tel:+237656413387" className="hover:text-[#c9a84c] transition">
+                  +237 656 413 387
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-[#a89cc8]">
+                <FaEnvelope className="text-[#c9a84c] shrink-0" />
+                <a href="mailto:contact@cabinet-avocat.fr" className="hover:text-[#c9a84c] transition">
+                  contact@cabinet-avocat.fr
+                </a>
+              </li>
+            </ul>
           </div>
+
         </div>
 
         {/* FOOTER BOTTOM */}
-        <div className="border-t border-white/10 mt-16 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-white/40">
-
-          <p>
-            © 2024 Cabinet Avocats Associés. Tous droits réservés.
-          </p>
-
-          <div className="flex gap-6 mt-4 md:mt-0">
-
-            <Link
-              to="/mentions-legales"
-              className="hover:text-white transition duration-300"
-            >
-              Mentions Légales
+        <div className="pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#a89cc8]">
+          <p>© {currentYear} Cabinet Avocats Associés. Tous droits réservés.</p>
+          <div className="flex gap-6">
+            <Link to="/mentions-legales" className="hover:text-[#c9a84c] transition">
+              Mentions légales
             </Link>
-
-            <Link
-              to="/confidentialite"
-              className="hover:text-white transition duration-300"
-            >
+            <Link to="/confidentialite" className="hover:text-[#c9a84c] transition">
               Politique de confidentialité
             </Link>
-
           </div>
         </div>
+
       </div>
 
-      {/* SCROLL TOP */}
+      {/* BOUTON SCROLL TOP */}
       <button
         onClick={scrollTop}
-        className="
-          absolute
-          right-8
-          bottom-8
-          w-14
-          h-14
-          rounded-full
-          bg-[#c9a84c]
-          text-[#0a0814]
-          flex
-          items-center
-          justify-center
-          shadow-[0_10px_40px_rgba(201,168,76,0.35)]
-          hover:scale-110
-          transition-all
-          duration-300
-        "
+        aria-label="Retour en haut"
+        className="absolute right-8 bottom-8 w-11 h-11 bg-[#c9a84c] text-[#0a0814] rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:bg-white transition-all duration-300"
       >
-        <FaArrowUp />
+        <FaArrowUp size={14} />
       </button>
+
     </footer>
   );
 }

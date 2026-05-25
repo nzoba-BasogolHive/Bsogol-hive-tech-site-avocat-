@@ -8,6 +8,7 @@ import CTASection from "../component/CTASection";
 import FooterSection from "../component/FooterSection";
 import Footer from "../component/footer";
 export default function Accueil() {
+  
   return (
     <div>
        <Hero/>

@@ -169,5 +169,4 @@ Les droits de la défense en procédure pénale.
   </div>
 </div>
 </div>
-</section>
-)}
+</section>)}

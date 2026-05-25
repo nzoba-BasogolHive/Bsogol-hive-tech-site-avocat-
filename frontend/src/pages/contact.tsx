@@ -1,6 +1,6 @@
 
 import Hero_contact from "../component/hero_contact";
-import Formulaire from "../component/formulaire";
+
 
 
 import FooterSection from "../component/FooterSection";
@@ -10,13 +10,14 @@ export default function Apropos () {
   return (
   <div>
     <Hero_contact/>
-    <Formulaire/>
+   
     
    
    
    
 
     <FooterSection/>
+    
 <Footer/>
   </div>
   );

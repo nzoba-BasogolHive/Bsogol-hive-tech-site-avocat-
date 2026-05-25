@@ -1,14 +1,10 @@
 // src/App.tsx
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-
-
-import type { Role } from "./types";
 
 // Navbar site public
 import NavbarComponent from "./component/Navbar";
-
 
 // Pages publiques
 import Accueil from "./pages/Accueil";
@@ -29,58 +25,26 @@ import Contact from "./pages/contact";
 import Formulaires from "./pages/formulaires";
 import DashboardWithCalendar from "./pages/DashboardWithCalendar";
 
-
 /* Layout pour le site public */
 function PublicLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-
-  const isDashboard =
-    location.pathname === "/DashboardWithCalendar";
+  const isDashboard = location.pathname === "/DashboardWithCalendar";
 
   return (
     <div>
       {!isDashboard && <NavbarComponent />}
-
       <main>{children}</main>
     </div>
   );
 }
+
 /* Contenu principal avec gestion des routes */
 function AppContent() {
   const location = useLocation();
 
-  // Auth & rôle stockés dans localStorage
-  const [auth, setAuth] = useState<boolean>(localStorage.getItem("auth") === "true");
-  const [role, setRole] = useState<Role | null>(localStorage.getItem("role") as Role | null);
-
-  // Fonction de login conforme au type attendu
-  const handleLogin = (loggedIn: boolean, userRole: Role | null) => {
-    setAuth(loggedIn);
-    setRole(userRole);
-    if (loggedIn && userRole) {
-      localStorage.setItem("auth", "true");
-      localStorage.setItem("role", userRole);
-    }
-  };
-
-  // Fonction de logout
-  const handleLogout = () => {
-    setAuth(false);
-    setRole(null);
-    localStorage.removeItem("auth");
-    localStorage.removeItem("role");
-  };
-
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        {/* LOGIN */}
-       
- 
-        {/* DASHBOARD SÉCURISÉ */}
-       
-
-        {/* SITE PUBLIC */}
         <Route
           path="/*"
           element={
@@ -102,7 +66,7 @@ function AppContent() {
                 <Route path="blog_civil" element={<BlogCivil />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="formulaires" element={<Formulaires />} />
-                 <Route path="DashboardWithCalendar" element={<DashboardWithCalendar />} />
+                <Route path="DashboardWithCalendar" element={<DashboardWithCalendar />} />
               </Routes>
             </PublicLayout>
           }
@@ -120,3 +84,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
