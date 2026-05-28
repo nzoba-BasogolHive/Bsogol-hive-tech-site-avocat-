@@ -1,30 +1,20 @@
-import Hero from "../component/Hero";
-import Aproposaccueil from "../component/aproposaccueil";
-import Actualitesaccueil from "../component/actualitesacceuil";
-import Commentaire from "../component/commentaire";
-import Expertiseaccueil from "../component/expertiseaccueil";
-import Nos_particularites from "../component/nos_particularites";
-import CTASection from "../component/CTASection";
-import FooterSection from "../component/FooterSection";
-import Footer from "../component/footer";
+import Hero from "../component/Accueil/Hero";
+import Actualitesaccueil from "../component/Accueil/actualitesacceuil";
+import Commentaire from "../component/Accueil/commentaire";
+import Expertiseaccueil from "../component/Accueil/expertiseaccueil";
+import Nos_particularites from "../component/Accueil/nos_particularites";
+import FooterSection from "../component/Accueil/FooterSection";
+import Footer from "../component/Accueil/footer";
 export default function Accueil() {
   return (
     <div>
-       <Hero/>
-       <Nos_particularites />
-
-      <Aproposaccueil />
-
+      <Hero />
+      <Nos_particularites />
       <Expertiseaccueil />
-
       <Actualitesaccueil />
-
-      <Commentaire /> <br /> <br />
-
-      <CTASection /> <br /><br /><br /> <br /><br />
-
+      <Commentaire />
       <FooterSection />
-<Footer/>
+      <Footer />
     </div>
   );
 }

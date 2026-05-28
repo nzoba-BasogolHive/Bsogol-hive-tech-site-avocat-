@@ -1,23 +1,17 @@
 
-import Hero_contact from "../component/hero_contact";
-import Formulaire from "../component/formulaire";
+import Hero_contact from "../component/Contact/hero_contact";
+import Formulaire from "../component/Contact/formulaire";
+// import FooterSection from "../component/Accueil/FooterSection";
+import Footer from "../component/Accueil/footer";
 
-import FooterSection from "../component/FooterSection";
-import Footer from "../component/footer";
-
-export default function Apropos () {
+export default function Apropos() {
   return (
-  <div>
-    <Hero_contact/>
-    <Formulaire/>
-    
-   
-   
-   
-
-    <FooterSection/>
-<Footer/>
-  </div>
+    <div>
+      <Hero_contact />
+      <Formulaire />
+      {/* <FooterSection /> */}
+      <Footer />
+    </div>
   );
 }
 
